@@ -36,9 +36,8 @@ export const INTEGERS = {
     },  
     weth: {
       // 1: '0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2',
-      //3: '0xD2D2B00B3D5C1dbDd9232debbB5B8625310742C6',
+      3: '0xD2D2B00B3D5C1dbDd9232debbB5B8625310742C6',
       //42: '0xf3a6679b266899042276804930b3bfbaf807f15b',
-      3: '0xA4F56EA167E1643414d9a8741C22958EE66b3C93',
     },
   }
 
@@ -79,7 +78,7 @@ export const supportedPools = [
     },
     tokenAddresses: {
       // 1: '0xb62aA4756d5911C9Aa899Dd01285753166d583E9', // contract address
-       3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+      3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa', // contract address
     },
     name: 'CROPS-ETH',
@@ -97,7 +96,7 @@ export const supportedPools = [
     },
     tokenAddresses: {
       // 1: '0xb62aA4756d5911C9Aa899Dd01285753166d583E9',
-       3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+      3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa', // contract address
     },
     name: 'CROPS-ETH',
@@ -114,7 +113,7 @@ export const supportedPools = [
     },
     tokenAddresses: {
       // 1: '0xb62aA4756d5911C9Aa899Dd01285753166d583E9',
-       3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+      3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa', // contract address
     },
     name: 'CROPS-ETH',
@@ -131,7 +130,7 @@ export const supportedPools = [
     },
     tokenAddresses: {
       // 1: '0xb62aA4756d5911C9Aa899Dd01285753166d583E9',
-       3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+      3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa', // contract address
     },
     name: 'CROPS-ETH',
@@ -175,11 +174,11 @@ export const supportedPools = [
     pid: 6,
     lpAddresses: {
       //1: '0xB4e16d0168e52d35CaCD2c6185b44281Ec28C9Dc',
-    3:'0x559CfBF7f59D551b5dd488C769eEc7ea6Aa4f7Bb',
+      3:'0x559CfBF7f59D551b5dd488C769eEc7ea6Aa4f7Bb',
       //42: '0x3ff949b50691d71d9c159d33fa91656ebb454855',
     },
     tokenAddresses: {
-        3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+       3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',
     },
     name: 'CROPS-USDC',
@@ -195,7 +194,7 @@ export const supportedPools = [
       //42: '0x3ff949b50691d71d9c159d33fa91656ebb454855',
     },
     tokenAddresses: {
-        3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+      3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',
     },
     name: 'CROPS-USDC',

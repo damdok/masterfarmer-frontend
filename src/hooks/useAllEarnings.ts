@@ -15,6 +15,9 @@ const useAllEarnings = () => {
   const farms = getFarms(crops)
   const masterChefContract = getMasterChefContract(crops)
   const block = useBlock()
+  console.log("crops44:",crops)
+  console.log("masterChefContract44:",masterChefContract)
+  console.log("account44:",account)
 
   const fetchAllBalances = useCallback(async () => {
     const balances: Array<BigNumber> = await Promise.all(
