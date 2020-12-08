@@ -214,7 +214,6 @@ export const redeem = async (masterChefContract, account) => {
   }
 }
 
-
 export const totalgetStaked = () => {    
   return 0
 }

@@ -22,13 +22,11 @@ const DepositModal: React.FC<DepositModalProps> = ({
   tokenName = '',
 }) => {
   const [val, setVal] = useState('')
-  console.log("pid222",pid)
   const [pendingTx, setPendingTx] = useState(false)
   const [timeLock, setTimeLock] = useState(false)
   const fullBalance = useMemo(() => {
     return getFullDisplayBalance(max)
   }, [max])
-  console.log("fullBalance",fullBalance)
 
   useEffect(() => {    
     if (timeLock && pid != 0 && pid != 4) {

@@ -178,7 +178,7 @@ export const supportedPools = [
       //42: '0x3ff949b50691d71d9c159d33fa91656ebb454855',
     },
     tokenAddresses: {
-       3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
+      3: '0x00a439eC9b925AC1CbBd6DCe580Fc3FA981e882C',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',
     },
     name: 'CROPS-USDC',
