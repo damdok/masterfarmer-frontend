@@ -150,6 +150,7 @@ export const stake = async (masterChefContract, pid, amount, account) => {
 }
 
 export const unstake = async (masterChefContract, pid, amount, account) => {
+
   return masterChefContract.methods
     .withdraw(
       pid,
@@ -162,6 +163,11 @@ export const unstake = async (masterChefContract, pid, amount, account) => {
     })
 }
 export const harvest = async (masterChefContract, pid, account) => {
+  
+  console.log("harvest masterChefContract= ", masterChefContract)
+  console.log("harvest pid= ", pid)
+  console.log("harvest account= ", account)
+
   return masterChefContract.methods
     .deposit(pid, '0')
     .send({ from: account })

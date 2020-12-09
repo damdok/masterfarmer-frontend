@@ -348,6 +348,19 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "devideCount",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
@@ -518,6 +531,19 @@
 	},
 	{
 		"inputs": [],
+		"name": "totalBurn",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
 		"name": "totalSupply",
 		"outputs": [
 			{
@@ -533,12 +559,12 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "recipient",
+				"name": "_to",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "_value",
 				"type": "uint256"
 			}
 		],
@@ -546,7 +572,7 @@
 		"outputs": [
 			{
 				"internalType": "bool",
-				"name": "",
+				"name": "success",
 				"type": "bool"
 			}
 		],
@@ -557,17 +583,17 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "sender",
+				"name": "_from",
 				"type": "address"
 			},
 			{
 				"internalType": "address",
-				"name": "recipient",
+				"name": "_to",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "_value",
 				"type": "uint256"
 			}
 		],
@@ -575,7 +601,7 @@
 		"outputs": [
 			{
 				"internalType": "bool",
-				"name": "",
+				"name": "success",
 				"type": "bool"
 			}
 		],
