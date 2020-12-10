@@ -30,8 +30,8 @@ export const contractAddresses = {
   },
   masterChef: {
     //3: '0x8AE90F580e26DA3e4C89105a3B824a8bBE9d720C',
-    //42: '0x00a03E1DC6Ccb4De2aC005c93Ce20aC009bAbA96',
-    42: '0x55d6cb2EC359Af488f3BC281F17054f8160f7d75',//original
+    42: '0x56a18B8477132BdF6db6726f8A7800Fb4a4409a1',
+    //42: '0x55d6cb2EC359Af488f3BC281F17054f8160f7d75',//original
   },  
   weth: {
     //3: '0x2D56ed810bb4Aa86b715f623615A34eE0DEA5bbC',

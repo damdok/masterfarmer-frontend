@@ -16,6 +16,7 @@ import TopBar from './components/TopBar'
 import useModal from './hooks/useModal'
 import Home from './views/Home'
 import Farms from './views/Farms'
+import Decay from './views/Decay'
 
 const App: React.FC = () => {
   const [mobileMenu, setMobileMenu] = useState(false)
@@ -40,6 +41,9 @@ const App: React.FC = () => {
           </Route>
           <Route path="/farms">
             <Farms />
+          </Route>
+          <Route path="/decay">
+            <Decay />
           </Route>
         </Switch>
       </Router>
