@@ -25,14 +25,12 @@ export const getCropsAddress = (crops) => {
 export const getWethContract = (crops) => {
   return crops && crops.contracts && crops.contracts.weth
 }
-
 export const getMasterChefContract = (crops) => {
   return crops && crops.contracts && crops.contracts.masterChef
 }
 export const getCropsContract = (crops) => {
   return crops && crops.contracts && crops.contracts.crops
 }
-
 export const getFarms = (crops) => {
   return crops
     ? crops.contracts.pools.map(
@@ -72,7 +70,7 @@ export const getPoolWeight = async (masterChefContract, pid) => {
   return new BigNumber(allocPoint).div(new BigNumber(totalAllocPoint))
 }
 
-export const getEarned = async (masterChefContract, pid, account) => {
+export const getEarned = async (masterChefContract, pid, account) => {  
   return masterChefContract.methods.pendingCrops(pid, account).call()
 }
 
