@@ -8,9 +8,6 @@ import { stake, getCrops, getEarned, getMasterChefContract, getMasterChefAddress
 const useStake = (pid: number) => {
   const { account } = useWallet()
   const crops = useCrops()
-  //console.log("account:",account)
-  //console.log("crops11:",crops)
-  //console.log("pid:",pid)
 
   const handleStake = useCallback(
     async (amount: string) => {
@@ -21,17 +18,6 @@ const useStake = (pid: number) => {
       const WethContract = getWethContract(crops)
       const CropsContract = getCropsContract(crops)
       const getCrop = getCrops(crops)
-      //const getearning = getEarned(crops)
-      console.log("crops11:", crops)
-      console.log("account11:", account)
-      console.log("pid11:", pid)
-      console.log("cropsaddress11:", cropsaddress)
-      console.log("WethContract11:", WethContract)
-      console.log("getCrop11:", getCrop)
-      //console.log("getearning11:", getearning)
-      console.log("CropsContract11:", CropsContract)
-      console.log("masterfarmeraddress11:", masterfarmeraddress)
-      console.log("masterfarmer11:", masterfarmer)
 
       const txHash = await stake(
         getMasterChefContract(crops),

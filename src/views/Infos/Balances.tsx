@@ -76,7 +76,6 @@ const PendingRewards: React.FC = () => {
 const Balances: React.FC = () => {
   const [totalSupply, setTotalSupply] = useState<BigNumber>()
   const crops = useCrops()
-  console.log("crops address = ", getCropsAddress(crops))
   const cropsBalance = useTokenBalance(getCropsAddress(crops))
   const { account, ethereum }: { account: any; ethereum: any } = useWallet()
 

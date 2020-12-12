@@ -88,8 +88,7 @@ const Subpage11: React.FC = () => {
     },
     [[]],
   )
-  console.log("rows0",rows[0][0])
-
+  
   const data1 = rows[0].map( function(v) {
     return Object.values( v );
  });

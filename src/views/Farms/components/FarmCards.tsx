@@ -33,19 +33,13 @@ const FarmCards: React.FC = () => {
     ({ tokenSymbol }) => tokenSymbol === 'CROPS',
   )
 
-  console.log("cropsIndex = ", cropsIndex);
-
   const cropsPrice =
     cropsIndex >= 0 && stakedValue[cropsIndex]
       ? stakedValue[cropsIndex].tokenPriceInWeth
       : new BigNumber(0)
 
-  console.log("stakedValue =", stakedValue[cropsIndex])
-
   const BLOCKS_PER_YEAR = new BigNumber(365)
   const CROPS_PER_BLOCK = new BigNumber(1)
-
-  console.log("BLOCKS_PER_YEAR = ", BLOCKS_PER_YEAR)
 
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
@@ -61,8 +55,6 @@ const FarmCards: React.FC = () => {
               .div(stakedValue[i].totalWethValue)
           : null,
       }
-
-       console.log("farmWithStakedValue = ",farmWithStakedValue)
 
       const newFarmRows = [...farmRows]
       if (newFarmRows[newFarmRows.length - 1].length === 4) {

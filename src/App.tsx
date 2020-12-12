@@ -56,13 +56,13 @@ const Providers: React.FC = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <UseWalletProvider
-        chainId={42}
-        //connectors={{
-        //  walletconnect: { rpcUrl: 'https://ropsten.infura.io/v3/8f3443d966884c7288b940947b5c37c1' },
-        //}}
+        chainId={3}
         connectors={{
-          walletconnect: { rpcUrl: 'https://kovan.infura.io/v3/8f3443d966884c7288b940947b5c37c1' },         
+          walletconnect: { rpcUrl: 'https://ropsten.infura.io/v3/8f3443d966884c7288b940947b5c37c1' },
         }}
+        //connectors={{
+        //  walletconnect: { rpcUrl: 'https://kovan.infura.io/v3/8f3443d966884c7288b940947b5c37c1' },         
+        //}}
       >
         <CropsProvider>
           <TransactionProvider>

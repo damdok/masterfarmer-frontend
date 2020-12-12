@@ -15,10 +15,7 @@ const { account } = useWallet()
   const crops = useCrops()
   
   const state = useCallback(async () => {
-    console.log("call burn function");
-    const success = await totalBurn(crops, account)
-    console.log("3333333");
-    
+    const success = await totalBurn(crops, account)    
   }, [crops])
 
   return { onSuccess: state }

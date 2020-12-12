@@ -29,6 +29,7 @@ interface StakeProps {
 
 const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
+  console.log("lpContract.options.address:",lpContract.options.address)
 
   const allowance = useAllowance(lpContract)  
   const { onApprove } = useApprove(lpContract)
@@ -44,8 +45,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
       onConfirm={onStake}
       tokenName={tokenName}
     />,
-  )
-  //console.log("pid111:", pid)  
+  )  
 
   const [onPresentWithdraw] = useModal(
     <WithdrawModal
@@ -103,8 +103,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const getTimeStatus = () => {
     setTimeStatus(!stakedBalance.eq(new BigNumber(0)) && calculateTimeLeft());
   }
-
-  // console.log("pooh timeStatus =", timeStatus);
+ 
 
   return (
     <Card>

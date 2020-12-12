@@ -3,12 +3,12 @@
     "static/js/0.8e64e1be.chunk.js": "/static/js/0.8e64e1be.chunk.js",
     "static/js/0.8e64e1be.chunk.js.map": "/static/js/0.8e64e1be.chunk.js.map",
     "main.css": "/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/static/js/main.27333e2d.chunk.js",
-    "main.js.map": "/static/js/main.27333e2d.chunk.js.map",
+    "main.js": "/static/js/main.04392611.chunk.js",
+    "main.js.map": "/static/js/main.04392611.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.5192b82f.js",
     "runtime-main.js.map": "/static/js/runtime-main.5192b82f.js.map",
-    "static/js/3.f421e739.chunk.js": "/static/js/3.f421e739.chunk.js",
-    "static/js/3.f421e739.chunk.js.map": "/static/js/3.f421e739.chunk.js.map",
+    "static/js/3.033b889d.chunk.js": "/static/js/3.033b889d.chunk.js",
+    "static/js/3.033b889d.chunk.js.map": "/static/js/3.033b889d.chunk.js.map",
     "static/js/4.226e15ba.chunk.js": "/static/js/4.226e15ba.chunk.js",
     "static/js/4.226e15ba.chunk.js.map": "/static/js/4.226e15ba.chunk.js.map",
     "static/js/5.86038a35.chunk.js": "/static/js/5.86038a35.chunk.js",
@@ -29,7 +29,7 @@
     "static/js/12.156a483e.chunk.js.map": "/static/js/12.156a483e.chunk.js.map",
     "index.html": "/index.html",
     "static/css/main.6dea0f05.chunk.css.map": "/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/3.f421e739.chunk.js.LICENSE.txt": "/static/js/3.f421e739.chunk.js.LICENSE.txt",
+    "static/js/3.033b889d.chunk.js.LICENSE.txt": "/static/js/3.033b889d.chunk.js.LICENSE.txt",
     "static/js/5.86038a35.chunk.js.LICENSE.txt": "/static/js/5.86038a35.chunk.js.LICENSE.txt",
     "static/js/6.777dd46f.chunk.js.LICENSE.txt": "/static/js/6.777dd46f.chunk.js.LICENSE.txt",
     "static/js/8.f1c018f6.chunk.js.LICENSE.txt": "/static/js/8.f1c018f6.chunk.js.LICENSE.txt",
@@ -37,6 +37,7 @@
     "static/media/2.713eb71b.png": "/static/media/2.713eb71b.png",
     "static/media/broccoli.c5955eca.gif": "/static/media/broccoli.c5955eca.gif",
     "static/media/brocoli.dbb045a3.jpg": "/static/media/brocoli.dbb045a3.jpg",
+    "static/media/burn.10d4fc0c.gif": "/static/media/burn.10d4fc0c.gif",
     "static/media/carrot.da8048df.gif": "/static/media/carrot.da8048df.gif",
     "static/media/chef.5aa7a43e.png": "/static/media/chef.5aa7a43e.png",
     "static/media/chef1.9c6f5e8c.png": "/static/media/chef1.9c6f5e8c.png",
@@ -48,8 +49,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.5192b82f.js",
-    "static/js/3.f421e739.chunk.js",
+    "static/js/3.033b889d.chunk.js",
     "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.27333e2d.chunk.js"
+    "static/js/main.04392611.chunk.js"
   ]
 }

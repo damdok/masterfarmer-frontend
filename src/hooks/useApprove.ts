@@ -12,10 +12,6 @@ const useApprove = (lpContract: Contract) => {
   const crops = useCrops()
   const masterChefContract = getMasterChefContract(crops)
   
-  // console.log("lpaddress = ", lpContract.options.address)
-  // console.log(masterChefContract)
-  // console.log("masterchefaddress = ", masterChefContract.options.address)
-
   const handleApprove = useCallback(async () => {
     try {
 

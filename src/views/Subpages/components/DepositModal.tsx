@@ -47,9 +47,7 @@ const DepositModal: React.FC<DepositModalProps> = ({
   const handleSelectMax = useCallback(() => {
     setVal(fullBalance)
   }, [fullBalance, setVal])
-
-  // console.log("pooh val = ", val == "");
-
+  
   return (
     <Modal>
       <ModalTitle text={`Deposit ${tokenName} Tokens`} />

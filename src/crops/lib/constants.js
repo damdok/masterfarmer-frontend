@@ -24,18 +24,18 @@ export const INTEGERS = {
 
 export const contractAddresses = {
   crops: { 
-    //3: '0x32AE4a28437298542dEb9307F8b5e627260228AE',
-    42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+    3: '0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+    //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
     //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
   },
   masterChef: {
-    //3: '0x8AE90F580e26DA3e4C89105a3B824a8bBE9d720C',
-    42: '0x56a18B8477132BdF6db6726f8A7800Fb4a4409a1',
+    3: '0x6180BD5fE983dB9aC6dc39f8829c491d66d91db9',
+    //42: '0xEFa7b6952535b70807ce012D19D13d18970Bb58d',
     //42: '0x55d6cb2EC359Af488f3BC281F17054f8160f7d75',//original
   },  
   weth: {
-    //3: '0x2D56ed810bb4Aa86b715f623615A34eE0DEA5bbC',
-    42: '0x2bfCCE707529264856d87DEeeeB64cdcFf755a84',
+    3: '0x2D56ed810bb4Aa86b715f623615A34eE0DEA5bbC',
+    //42: '0x2bfCCE707529264856d87DEeeeB64cdcFf755a84',
     //42: '0xf3a6679b266899042276804930b3bfbaf807f15b',//original
   },
 }
@@ -45,13 +45,13 @@ export const supportedPools = [
   {
     pid: 0,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
@@ -63,13 +63,13 @@ export const supportedPools = [
   {
     pid: 1,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
@@ -80,13 +80,13 @@ export const supportedPools = [
   {
     pid: 2,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
@@ -97,13 +97,13 @@ export const supportedPools = [
   {
     pid: 3,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
@@ -114,13 +114,13 @@ export const supportedPools = [
   {
     pid: 4,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-USDC',
@@ -131,13 +131,13 @@ export const supportedPools = [
   {
     pid: 5,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-USDC',
@@ -148,13 +148,13 @@ export const supportedPools = [
   {
     pid: 6,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-USDC',
@@ -165,13 +165,13 @@ export const supportedPools = [
   {
     pid: 7,
     lpAddresses: {
-      //3:'0x3061B4ed5F462c2675ff6ADA1E3d5580A8b710E2',
-      42: '0x22cf5d9d3ad561d0386717e919176C99776e1503',
+      3:'0x431e9526d0282ce7d0a12b19e8cce3c58f384677',
+      //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      //3:'0x32AE4a28437298542dEb9307F8b5e627260228AE',
-      42: '0x2f7224d8024389e978D982f87AA79859b4730496',
+      3:'0xA74545CE0bdDb063c4b468B89CE9630F28B75e64',
+      //42: '0x2f7224d8024389e978D982f87AA79859b4730496',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-USDC',

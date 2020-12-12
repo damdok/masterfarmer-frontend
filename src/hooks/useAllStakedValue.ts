@@ -55,9 +55,6 @@ const useAllStakedValue = () => {
 
     setBalance(balances)
   }, [account, masterChefContract, crops])
-  console.log("account555:",account)
-  console.log("masterChefContract555:",masterChefContract)
-  console.log("crops555:",crops)
 
   useEffect(() => {
     if (account && masterChefContract && crops) {

@@ -129,9 +129,6 @@ export const getCropsSupply = async (crops) => {
 
 export const stake = async (masterChefContract, pid, amount, account) => {
 
-  console.log("pid rds rds= ", pid)
-  console.log("masterChefContract= ", masterChefContract)
-
   return masterChefContract.methods
     .deposit(
       pid,
@@ -162,10 +159,6 @@ export const unstake = async (masterChefContract, pid, amount, account) => {
 }
 export const harvest = async (masterChefContract, pid, account) => {
   
-  console.log("harvest masterChefContract= ", masterChefContract)
-  console.log("harvest pid= ", pid)
-  console.log("harvest account= ", account)
-
   return masterChefContract.methods
     .deposit(pid, '0')
     .send({ from: account })
