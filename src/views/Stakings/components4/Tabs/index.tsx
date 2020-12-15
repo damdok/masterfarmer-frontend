@@ -26,7 +26,7 @@ const Tabs: React.FC = () => {
           className={nolock}
           onClick={() => handleTabLink('nolock')}
         >
-          No Lock
+          
         </Button>        
       </TabLinks>
       <TabBottomline>        

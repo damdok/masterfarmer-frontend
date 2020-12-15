@@ -32,13 +32,7 @@ const PendingRewards: React.FC = () => {
 
   const [farms] = useFarms()
   const allStakedValue = useAllStakedValue()
-
-  if (allStakedValue && allStakedValue.length) {
-    const sumWeth = farms.reduce(
-      (c, { id }, i) => c + (allStakedValue[i].totalWethValue.toNumber() || 0),
-      0,
-    )
-  }
+  
 
   useEffect(() => {
     setStart(end)

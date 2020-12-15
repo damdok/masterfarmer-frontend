@@ -34,7 +34,7 @@ export const contractAddresses = {
     //42: '0x55d6cb2EC359Af488f3BC281F17054f8160f7d75',//original
   },  
   weth: {
-    3: '0x2D56ed810bb4Aa86b715f623615A34eE0DEA5bbC',
+    3: '0x2D56ed810bb4Aa86b715f623615A34eE0DEA5bbC',//self
     //42: '0x2bfCCE707529264856d87DEeeeB64cdcFf755a84',
     //42: '0xf3a6679b266899042276804930b3bfbaf807f15b',//original
   },

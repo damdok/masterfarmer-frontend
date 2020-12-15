@@ -154,17 +154,6 @@ export const unstake = async (masterChefContract, pid, amount, account) => {
       return tx.transactionHash
     })
 }
-/*
-export const harvest = async (masterChefContract, pid, account) => {
-  
-  return masterChefContract.methods
-    .claim(pid)
-    .send({ from: account })
-    .on('transactionHash', (tx) => {
-      console.log(tx)
-      return tx.transactionHash
-    })
-}*/
 
 export const harvest = async (masterChefContract, pid, account) => {
   return masterChefContract.methods
@@ -219,8 +208,20 @@ export const redeem = async (masterChefContract, account) => {
   }
 }
 
-export const totalgetStaked = () => {    
-  return 0
+
+export const totalgetStaked = async (masterChefContract, account) => {
+  try {
+    let totalgetStakedamount = 0    
+    for(var i = 0; i < 6; i++){
+      const { amount } = await masterChefContract.methods
+      .userInfo(i, account)
+      .call()
+      totalgetStakedamount += amount
+    }    
+    return new BigNumber(totalgetStakedamount)
+  } catch {
+    return new BigNumber(0)
+  }
 }
 
 export const totalgetClaimableRewards = () => {    
