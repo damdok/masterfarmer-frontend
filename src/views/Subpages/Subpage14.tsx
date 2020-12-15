@@ -86,51 +86,35 @@ const Subpage14: React.FC = () => {
 
       
       const newFarmRows = [...farmRows]
-      if (newFarmRows[newFarmRows.length - 1].length === 4) {
-        newFarmRows.push([farmWithStakedValue])
+      const newindex = newFarmRows.length - 1
+      if(newindex == 0){
+        if (newFarmRows[newindex].length === 3) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       } else {
-        newFarmRows[newFarmRows.length - 1].push(farmWithStakedValue)
+        if (newFarmRows[newindex].length === 1) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       }
+        
       return newFarmRows
     },
     [[]],
   )
+  console.log("rows",rows)
 
-  
-  const data1 = rows[0].map( function(v) {
-    return Object.values( v );
- });
- 
-  
-     
-    
-//const { farmId } = useParams()
 
-  /*const {
-    pid,
-    lpToken,
-    lpTokenAddress,
-    tokenAddress,
-    earnToken,
-    name,
-    icon,
-  } = useFarm("0") || {
-    pid: 0,
-    lpToken: '',
-    lpTokenAddress: '',
-    tokenAddress: '',
-    earnToken: '',
-    name: '',
-    icon: '',
-  }*/
-
-  const pid = rows[0][3].pid
-  const lpToken = rows[0][3].lpToken
-  const lpTokenAddress = rows[0][3].lpTokenAddress
-  const tokenAddress = rows[0][3].tokenAddress
-  const earnToken = rows[0][3].earnToken
-  const name = rows[0][3].name
-  const icon = rows[0][3].icon
+  const pid = rows[0][2].pid
+  const lpToken = rows[0][2].lpToken
+  const lpTokenAddress = rows[0][2].lpTokenAddress
+  const tokenAddress = rows[0][2].tokenAddress
+  const earnToken = rows[0][2].earnToken
+  const name = rows[0][2].name
+  const icon = rows[0][2].icon
 
   
   const crops = useCrops()

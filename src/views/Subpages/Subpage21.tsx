@@ -88,15 +88,26 @@ const Subpage21: React.FC = () => {
 
       
       const newFarmRows = [...farmRows]
-      if (newFarmRows[newFarmRows.length - 1].length === 4) {
-        newFarmRows.push([farmWithStakedValue])
+      const newindex = newFarmRows.length - 1
+      if(newindex == 0){
+        if (newFarmRows[newindex].length === 3) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       } else {
-        newFarmRows[newFarmRows.length - 1].push(farmWithStakedValue)
+        if (newFarmRows[newindex].length === 1) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       }
+        
       return newFarmRows
     },
     [[]],
   )
+  console.log("rows",rows)
 
   
   const data1 = rows[0].map( function(v) {

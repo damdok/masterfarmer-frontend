@@ -10,7 +10,7 @@ import Label from '../../components/Label'
 import Spacer from '../../components/Spacer'
 import Value from '../../components/Value'
 import CropsIcon from '../../components/CropsIcon'
-import Usdccropsapy from '../../components/Usdccropsapy'
+import Wbtccropsapy from '../../components/Wbtccropsapy'
 import Cropsethapy from '../../components/Cropsethapy'
 import Button from '../../components/Button'
 import useAllEarnings from '../../hooks/useAllEarnings'
@@ -47,7 +47,7 @@ interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
 
-const Subpage24: React.FC = () => {
+const Subpage31: React.FC = () => {
   /////
   const [farms] = useFarms()
   const { account } = useWallet()
@@ -57,16 +57,20 @@ const Subpage24: React.FC = () => {
     ({ tokenSymbol }) => tokenSymbol === 'CROPS',
   )
 
+  
+ 
   const cropsPrice =
     cropsIndex >= 0 && stakedValue[cropsIndex]
       ? stakedValue[cropsIndex].tokenPriceInWeth
       : new BigNumber(0)
 
   
+
   const BLOCKS_PER_YEAR = new BigNumber(365)
   const CROPS_PER_BLOCK = new BigNumber(1)
 
-    
+  
+  
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
 
@@ -82,23 +86,35 @@ const Subpage24: React.FC = () => {
           : null,
       }
 
-
+      
       const newFarmRows = [...farmRows]
-      if (newFarmRows[newFarmRows.length - 1].length === 4) {
-        newFarmRows.push([farmWithStakedValue])
+      const newindex = newFarmRows.length - 1
+      if(newindex == 0){
+        if (newFarmRows[newindex].length === 3) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       } else {
-        newFarmRows[newFarmRows.length - 1].push(farmWithStakedValue)
+        if (newFarmRows[newindex].length === 1) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       }
+        
       return newFarmRows
     },
     [[]],
   )
+  console.log("rows",rows)
 
+  
   const data1 = rows[0].map( function(v) {
     return Object.values( v );
  });
-    
-    
+ 
+  
 //const { farmId } = useParams()
 
   /*const {
@@ -119,13 +135,13 @@ const Subpage24: React.FC = () => {
     icon: '',
   }*/
 
-  const pid = rows[1][3].pid
-  const lpToken = rows[1][3].lpToken
-  const lpTokenAddress = rows[1][3].lpTokenAddress
-  const tokenAddress = rows[1][3].tokenAddress
-  const earnToken = rows[1][3].earnToken
-  const name = rows[1][3].name
-  const icon = rows[1][3].icon
+  const pid = rows[2][0].pid
+  const lpToken = rows[2][0].lpToken
+  const lpTokenAddress = rows[2][0].lpTokenAddress
+  const tokenAddress = rows[2][0].tokenAddress
+  const earnToken = rows[2][0].earnToken
+  const name = rows[2][0].name
+  const icon = rows[2][0].icon
   
   const crops = useCrops()
   const { ethereum } = useWallet()
@@ -147,7 +163,6 @@ const Subpage24: React.FC = () => {
   }, [earnToken])
 
   
-  
   return (
     <StyledFarm>
     <StyledWrapper>           
@@ -168,8 +183,8 @@ const Subpage24: React.FC = () => {
       <Styledimg>
         <StyledBalance>
           <div style={{ flex: 1 }}>          
-              <Usdccropsapy/>          
-              <span style={{ position: "absolute", bottom: 170, left: 80}}>7days Lock Pool</span>
+              <Wbtccropsapy/>          
+              <span style={{ position: "absolute", bottom: 170, left: 80}}>No Lock Pool</span>
               <span style={{ position: "absolute", bottom: 100, left: 25}}>You Can Un-Stake Your LP Tokens at Any Time</span>
               <span style={{ position: "absolute", bottom: 40, left: 60}}>
                 <Button text="Stake Using ETH" size= "sm" onClick={async () => {          
@@ -214,8 +229,8 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   const { account } = useWallet()
   const { lpTokenAddress } = farm
   const crops = useCrops()
- 
 
+  
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
     const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -556,4 +571,4 @@ const BroccoliStyledCard = styled.div`
   flex-direction: column;
 `
 
-export default Subpage24
+export default Subpage31

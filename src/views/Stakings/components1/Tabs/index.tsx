@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 import { Container, TabLinks, Button, TabContent, TabBottomline, Section } from './styles';
 
 import Subpage11 from '../../../Subpages/Subpage11';
-import Subpage12 from '../../../Subpages/Subpage12';
 import Subpage13 from '../../../Subpages/Subpage13';
 import Subpage14 from '../../../Subpages/Subpage14';
 //
@@ -11,7 +10,6 @@ import Subpage14 from '../../../Subpages/Subpage14';
 const Tabs: React.FC = () => {
     
   const [nolock, setNolock] = useState('active');
-  const [day1, setDay1] = useState('hidden');
   const [day3, setDay3] = useState('hidden');
   const [day7, setDay7] = useState('hidden');
 
@@ -19,25 +17,16 @@ const Tabs: React.FC = () => {
     switch (id) {
       case 'nolock':
         setNolock('active');
-        setDay1('hidden');
-        setDay3('hidden');
-        setDay7('hidden');
-        break;
-      case 'day1':
-        setNolock('hidden');
-        setDay1('active');
         setDay3('hidden');
         setDay7('hidden');
         break;
       case 'day3':
         setNolock('hidden');
-        setDay1('hidden');
         setDay3('active');
         setDay7('hidden');
         break;
       case 'day7':
         setNolock('hidden');
-        setDay1('hidden');
         setDay3('hidden');
         setDay7('active');
         break;
@@ -55,14 +44,7 @@ const Tabs: React.FC = () => {
           onClick={() => handleTabLink('nolock')}
         >
           No Lock
-        </Button>
-        <Button
-          type="button"
-          className={day1}
-          onClick={() => handleTabLink('day1')}
-        >
-          1 Day
-        </Button>
+        </Button>        
         <Button
           type="button"
           className={day3}
@@ -83,11 +65,7 @@ const Tabs: React.FC = () => {
       <TabContent>
         <Section className={nolock}>                     
           <Subpage11/>                   
-        </Section>
-
-        <Section className={day1}>
-          <Subpage12/>
-        </Section>
+        </Section>       
 
         <Section className={day3}>
           <Subpage13/>

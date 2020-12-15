@@ -10,7 +10,7 @@ import Label from '../../components/Label'
 import Spacer from '../../components/Spacer'
 import Value from '../../components/Value'
 import CropsIcon from '../../components/CropsIcon'
-import Usdccropsapy from '../../components/Usdccropsapy'
+import Surfcropsapy from '../../components/Surfcropsapy'
 import Cropsethapy from '../../components/Cropsethapy'
 import Button from '../../components/Button'
 import useAllEarnings from '../../hooks/useAllEarnings'
@@ -47,7 +47,7 @@ interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
 
-const Subpage22: React.FC = () => {
+const Subpage41: React.FC = () => {
   /////
   const [farms] = useFarms()
   const { account } = useWallet()
@@ -58,16 +58,19 @@ const Subpage22: React.FC = () => {
   )
 
   
+ 
   const cropsPrice =
     cropsIndex >= 0 && stakedValue[cropsIndex]
       ? stakedValue[cropsIndex].tokenPriceInWeth
       : new BigNumber(0)
 
   
+
   const BLOCKS_PER_YEAR = new BigNumber(365)
   const CROPS_PER_BLOCK = new BigNumber(1)
 
-    
+  
+  
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
 
@@ -85,22 +88,33 @@ const Subpage22: React.FC = () => {
 
       
       const newFarmRows = [...farmRows]
-      if (newFarmRows[newFarmRows.length - 1].length === 4) {
-        newFarmRows.push([farmWithStakedValue])
+      const newindex = newFarmRows.length - 1
+      if(newindex == 0){
+        if (newFarmRows[newindex].length === 3) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       } else {
-        newFarmRows[newFarmRows.length - 1].push(farmWithStakedValue)
+        if (newFarmRows[newindex].length === 1) {
+          newFarmRows.push([farmWithStakedValue])
+        } else {
+          newFarmRows[newindex].push(farmWithStakedValue)
+        }
       }
+        
       return newFarmRows
     },
     [[]],
   )
+  console.log("rows",rows)
 
   
   const data1 = rows[0].map( function(v) {
     return Object.values( v );
  });
-   
-    
+ 
+  
 //const { farmId } = useParams()
 
   /*const {
@@ -121,15 +135,14 @@ const Subpage22: React.FC = () => {
     icon: '',
   }*/
 
-  const pid = rows[1][1].pid
-  const lpToken = rows[1][1].lpToken
-  const lpTokenAddress = rows[1][1].lpTokenAddress
-  const tokenAddress = rows[1][1].tokenAddress
-  const earnToken = rows[1][1].earnToken
-  const name = rows[1][1].name
-  const icon = rows[1][1].icon
-
- 
+  const pid = rows[3][0].pid
+  const lpToken = rows[3][0].lpToken
+  const lpTokenAddress = rows[3][0].lpTokenAddress
+  const tokenAddress = rows[3][0].tokenAddress
+  const earnToken = rows[3][0].earnToken
+  const name = rows[3][0].name
+  const icon = rows[3][0].icon
+  
   const crops = useCrops()
   const { ethereum } = useWallet()
 
@@ -149,10 +162,6 @@ const Subpage22: React.FC = () => {
     return earnToken.toUpperCase()
   }, [earnToken])
 
-    
-   
-  
-  ////////////////
   
   return (
     <StyledFarm>
@@ -174,8 +183,8 @@ const Subpage22: React.FC = () => {
       <Styledimg>
         <StyledBalance>
           <div style={{ flex: 1 }}>          
-              <Usdccropsapy/>          
-              <span style={{ position: "absolute", bottom: 170, left: 80}}>1day Lock Pool</span>
+              <Surfcropsapy/>          
+              <span style={{ position: "absolute", bottom: 170, left: 80}}>No Lock Pool</span>
               <span style={{ position: "absolute", bottom: 100, left: 25}}>You Can Un-Stake Your LP Tokens at Any Time</span>
               <span style={{ position: "absolute", bottom: 40, left: 60}}>
                 <Button text="Stake Using ETH" size= "sm" onClick={async () => {          
@@ -221,7 +230,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   const { lpTokenAddress } = farm
   const crops = useCrops()
 
-
+  
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
     const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -562,4 +571,4 @@ const BroccoliStyledCard = styled.div`
   flex-direction: column;
 `
 
-export default Subpage22
+export default Subpage41

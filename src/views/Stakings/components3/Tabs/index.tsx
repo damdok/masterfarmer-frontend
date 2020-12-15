@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Container, TabLinks, Button, TabContent, TabBottomline, Section } from './styles';
 
 import Stakings from '../../Stakings';
-import Subpage21 from '../../../Subpages/Subpage21';
+import Subpage31 from '../../../Subpages/Subpage31';
 
 const Tabs: React.FC = () => {
   const [nolock, setNolock] = useState('active');
@@ -12,7 +12,7 @@ const Tabs: React.FC = () => {
     switch (id) {
       case 'nolock':
         setNolock('active');
-        break;
+        break;      
       default:
         break;
     }
@@ -33,7 +33,7 @@ const Tabs: React.FC = () => {
       </TabBottomline>
       <TabContent>
         <Section className={nolock}>
-          <Subpage21/>
+          <Subpage31/>
         </Section>        
       </TabContent>
     </Container>

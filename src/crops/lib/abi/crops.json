@@ -1,5 +1,10 @@
 [
 	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -79,6 +84,31 @@
 		"inputs": [
 			{
 				"indexed": true,
+				"internalType": "uint256",
+				"name": "epoch",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "decayrate",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "totalSupply",
+				"type": "uint256"
+			}
+		],
+		"name": "LogBurn",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
 				"internalType": "address",
 				"name": "previousOwner",
 				"type": "address"
@@ -119,6 +149,31 @@
 		"type": "event"
 	},
 	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": false,
+				"internalType": "address",
+				"name": "withdrawer",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "tokensPerBlock",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "timelog",
+				"type": "uint256"
+			}
+		],
+		"name": "withdrawhistory",
+		"type": "event"
+	},
+	{
 		"inputs": [],
 		"name": "DELEGATION_TYPEHASH",
 		"outputs": [
@@ -145,10 +200,75 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "_decimals",
+		"outputs": [
+			{
+				"internalType": "uint8",
+				"name": "",
+				"type": "uint8"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_name",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_owner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint8",
+				"name": "decimals_",
+				"type": "uint8"
+			}
+		],
+		"name": "_setupDecimals",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "_symbol",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "owner",
+				"name": "owner_",
 				"type": "address"
 			},
 			{
@@ -177,7 +297,7 @@
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "value",
 				"type": "uint256"
 			}
 		],
@@ -214,6 +334,82 @@
 	{
 		"inputs": [
 			{
+				"internalType": "uint256",
+				"name": "epoch",
+				"type": "uint256"
+			}
+		],
+		"name": "burn",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_newdecayBurnrate",
+				"type": "uint256"
+			}
+		],
+		"name": "changedecayBurnrate",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_newtokensPerBlock",
+				"type": "uint256"
+			}
+		],
+		"name": "changetokensPerBlock",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_newtransBurnrate",
+				"type": "uint256"
+			}
+		],
+		"name": "changetransBurnrate",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "address",
 				"name": "",
 				"type": "address"
@@ -234,6 +430,19 @@
 			{
 				"internalType": "uint256",
 				"name": "votes",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "decayBurnrate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
 				"type": "uint256"
 			}
 		],
@@ -418,12 +627,12 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "_to",
+				"name": "account",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "_amount",
+				"name": "amount",
 				"type": "uint256"
 			}
 		],
@@ -442,7 +651,7 @@
 				"type": "string"
 			}
 		],
-		"stateMutability": "view",
+		"stateMutability": "pure",
 		"type": "function"
 	},
 	{
@@ -513,6 +722,19 @@
 				"type": "string"
 			}
 		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "tokensPerBlock",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
 		"stateMutability": "view",
 		"type": "function"
 	},
@@ -530,15 +752,28 @@
 		"type": "function"
 	},
 	{
+		"inputs": [],
+		"name": "transBurnrate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "recipient",
+				"name": "to",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "value",
 				"type": "uint256"
 			}
 		],
@@ -557,17 +792,17 @@
 		"inputs": [
 			{
 				"internalType": "address",
-				"name": "sender",
+				"name": "from",
 				"type": "address"
 			},
 			{
 				"internalType": "address",
-				"name": "recipient",
+				"name": "to",
 				"type": "address"
 			},
 			{
 				"internalType": "uint256",
-				"name": "amount",
+				"name": "value",
 				"type": "uint256"
 			}
 		],

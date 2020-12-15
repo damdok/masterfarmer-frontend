@@ -1,54 +1,30 @@
 import BigNumber from 'bignumber.js'
-import React, { useCallback,useEffect, useMemo, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import CountUp from 'react-countup'
+import React, { useEffect, useState } from 'react'
+import Countdown, { CountdownRenderProps } from 'react-countdown'
 import styled, { keyframes } from 'styled-components'
 import { useWallet } from 'use-wallet'
-import Card from '../../components/Card'
-import CardContent from '../../components/CardContent'
-import Label from '../../components/Label'
-import Spacer from '../../components/Spacer'
-import Value from '../../components/Value'
-import CropsIcon from '../../components/CropsIcon'
-import Usdccropsapy from '../../components/Usdccropsapy'
-import Cropsethapy from '../../components/Cropsethapy'
-import Button from '../../components/Button'
-import useAllEarnings from '../../hooks/useAllEarnings'
-import useFarms from '../../hooks/useFarms'
-import useFarm from '../../hooks/useFarm'
-import useTokenBalance from '../../hooks/useTokenBalance'
-import useCrops from '../../hooks/useCrops'
-import useAllowance from '../../hooks/useAllowance'
-import useApprove from '../../hooks/useApprove'
-import useStake from '../../hooks/useStake'
-import useModal from '../../hooks/useModal'
-import useStakedBalance from '../../hooks/useStakedBalance'
-import useUnstake from '../../hooks/useUnstake'
-import DepositModal from './components/DepositModal'
-import Harvest from './components/Harvest'
-import Stake from './components/Stake'
-import { getEarned, getCropsAddress, getCropsSupply, getMasterChefContract } from '../../crops/utils'
-import { getBalanceNumber } from '../../utils/formatBalance'
-import { Contract } from 'web3-eth-contract'
-import { getContract } from '../../utils/erc20'
-import { provider } from 'web3-core'
-import useRedeem from '../../hooks/useRedeem'
-import TimerComponent from './components/Timer'
-import { Farm } from '../../contexts/Farms'
-import useAllStakedValue, {StakedValue,} from '../../hooks/useAllStakedValue'
-import Loader from '../../components/Loader'
-import Countdown, { CountdownRenderProps } from 'react-countdown'
-import { bnToDec } from '../../utils'
-import carrot from '../../assets/img/carrot.gif'
-import broccoli from '../../assets/img/broccoli.gif'
-import { symbolName } from 'typescript'
+import Button from '../../../components/CardButton'
+import Card from '../../../components/Card'
+import CardContent from '../../../components/CardContent'
+import CardIcon from '../../../components/CardIcon'
+import Loader from '../../../components/Loader'
+import Spacer from '../../../components/Spacer'
+import { Farm } from '../../../contexts/Farms'
+import useAllStakedValue, {
+  StakedValue,
+} from '../../../hooks/useAllStakedValue'
+import useFarms from '../../../hooks/useFarms'
+import useCrops from '../../../hooks/useCrops'
+import { getEarned, getMasterChefContract } from '../../../crops/utils'
+import { bnToDec } from '../../../utils'
+import carrot from '../../../assets/img/carrot.gif'
+import broccoli from '../../../assets/img/broccoli.gif'
 
 interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
-
-const Subpage23: React.FC = () => {
-  /////
+  
+const FarmCards: React.FC = () => {
   const [farms] = useFarms()
   const { account } = useWallet()
   const stakedValue = useAllStakedValue()
@@ -56,18 +32,15 @@ const Subpage23: React.FC = () => {
   const cropsIndex = farms.findIndex(
     ({ tokenSymbol }) => tokenSymbol === 'CROPS',
   )
-  
-  
+
   const cropsPrice =
     cropsIndex >= 0 && stakedValue[cropsIndex]
       ? stakedValue[cropsIndex].tokenPriceInWeth
       : new BigNumber(0)
 
-  
   const BLOCKS_PER_YEAR = new BigNumber(365)
   const CROPS_PER_BLOCK = new BigNumber(1)
 
-    
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
 
@@ -83,7 +56,6 @@ const Subpage23: React.FC = () => {
           : null,
       }
 
-      
       const newFarmRows = [...farmRows]
       if (newFarmRows[newFarmRows.length - 1].length === 4) {
         newFarmRows.push([farmWithStakedValue])
@@ -95,116 +67,27 @@ const Subpage23: React.FC = () => {
     [[]],
   )
 
-  
-  const data1 = rows[0].map( function(v) {
-    return Object.values( v );
- });
- 
-   
-    
-//const { farmId } = useParams()
-
-  /*const {
-    pid,
-    lpToken,
-    lpTokenAddress,
-    tokenAddress,
-    earnToken,
-    name,
-    icon,
-  } = useFarm("0") || {
-    pid: 0,
-    lpToken: '',
-    lpTokenAddress: '',
-    tokenAddress: '',
-    earnToken: '',
-    name: '',
-    icon: '',
-  }*/
-
-  const pid = rows[1][2].pid
-  const lpToken = rows[1][2].lpToken
-  const lpTokenAddress = rows[1][2].lpTokenAddress
-  const tokenAddress = rows[1][2].tokenAddress
-  const earnToken = rows[1][2].earnToken
-  const name = rows[1][2].name
-  const icon = rows[1][2].icon
-
-  const crops = useCrops()
-  const { ethereum } = useWallet()
-
-  const lpContract = useMemo(() => {
-    return getContract(ethereum as provider, lpTokenAddress)
-  }, [ethereum, lpTokenAddress])
-
-  const { onRedeem } = useRedeem(getMasterChefContract(crops))
-
-  const lpTokenName = useMemo(() => {
-    return lpToken.toUpperCase()
-  }, [lpToken])
-
-  const localStorageTime = localStorage.getItem('myValueInLocalStorage' + pid)
-
-  const earnTokenName = useMemo(() => {
-    return earnToken.toUpperCase()
-  }, [earnToken])
-
-  
- 
   return (
-    <StyledFarm>
-    <StyledWrapper>           
-      <StyledBalance>
-      <Spacer />
-        <div style={{ flex: 1 }}>
-          <StyledWrapper>
-            <Stake
-              lpContract={lpContract}
-              pid={pid}
-              tokenName={lpToken.toUpperCase()}
-            />
-          </StyledWrapper>
-
-        </div>
-      </StyledBalance>
-
-      <Styledimg>
-        <StyledBalance>
-          <div style={{ flex: 1 }}>          
-              <Usdccropsapy/>          
-              <span style={{ position: "absolute", bottom: 170, left: 80}}>3days Lock Pool</span>
-              <span style={{ position: "absolute", bottom: 100, left: 25}}>You Can Un-Stake Your LP Tokens at Any Time</span>
-              <span style={{ position: "absolute", bottom: 40, left: 60}}>
-                <Button text="Stake Using ETH" size= "sm" onClick={async () => {          
-                  }}
-                />
-              </span>
-          </div>
-        </StyledBalance>
-      </Styledimg>
-
-      <StyledBalance>
-        <Spacer />
-        <Harvest pid={pid} />
-      </StyledBalance>
-      
-      <Spacer size="lg" />
-    
-    </StyledWrapper>
-
-    <StyledcolumnWrapper>
-      <Spacer size="lg" />
-      <TimerComponent
-        pid={pid}
-        remaintime={localStorageTime}
-      />
-      <Spacer size="lg" />
-    </StyledcolumnWrapper>
-    
-    </StyledFarm>
+    <StyledCards>
+      {!!rows[0].length ? (
+        rows.map((farmRow, i) => (
+          <StyledRow key={i}>
+            {farmRow.map((farm, j) => (
+              <React.Fragment key={j}>
+                <FarmCard farm={farm} />
+                {(j === 0 || j === 1 || j === 2) && <StyledSpacer />}
+              </React.Fragment>
+            ))}
+          </StyledRow>
+        ))
+      ) : (
+        <StyledLoadingWrapper>
+          <Loader text="Farming ..." />
+        </StyledLoadingWrapper>
+      )}
+    </StyledCards>
   )
 }
-
 
 interface FarmCardProps {
   farm: FarmWithStakedValue
@@ -218,7 +101,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   const { lpTokenAddress } = farm
   const crops = useCrops()
 
-  
   const renderer = (countdownProps: CountdownRenderProps) => {
     const { hours, minutes, seconds } = countdownProps
     const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
@@ -307,7 +189,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
               )}
             </Button>
             
-            
           </StyledContent>
         </CardContent>
         </CarrotStyledCard> 
@@ -383,85 +264,6 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
   }
 }
 
-
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
-  align-items: center;
-  align-content: stretch;
-  width:100%;
-`
-
-const StyledcolumnWrapper = styled.div`
-  display: flex;  
-  align-items: center;
-  flex-direction: column;
-`
-
-const Styledimg = styled.div`
-  padding-left:20px;
-  position: relative;
-`
-
-const StyledBalance = styled.div`
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  color: ${(props) => props.theme.color.grey[900]};
-`
-
-const StyledFarm = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;  
-`
-
-const StyledCards = styled.div`
-  width: 1080px;
-  margin-right:70px;
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-const StyledRow = styled.div`
-  display: flex;
-  margin-bottom: ${(props) => props.theme.spacing[4]}px;
-  flex-flow: row wrap;
-  width:140%;
-  @media (max-width: 768px) {
-    width: 100%;
-    flex-flow: column nowrap;
-    align-items: center;
-  }
-`
-
-const StyledSpacer = styled.div`
-  height: ${(props) => props.theme.spacing[4]}px;
-  width: ${(props) => props.theme.spacing[4]}px;
-`
-
-const StyledLoadingWrapper = styled.div`
-  align-items: center;
-  display: flex;
-  flex: 1;
-  justify-content: center;
-`
-
-const StyledCardWrapper = styled.div`
-  display: flex;
-  width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
-  position: relative;
-`
-
 const RainbowLight = keyframes`
   
 	0% {
@@ -503,6 +305,14 @@ const StyledCardAccent = styled.div`
   z-index: -1;
 `
 
+const StyledCards = styled.div`
+  width: 1080px;
+  margin-right:70px;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+
 const CarrotStyledCard = styled.div`
   border-radius: 12px;
   box-shadow: inset 1px 1px 0px ${(props) => props.theme.color.grey[100]};
@@ -510,42 +320,6 @@ const CarrotStyledCard = styled.div`
   flex: 1;
   background-color:#ea6627;
   flex-direction: column;
-`
-
-const StyledContent = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background-color:white;
-  border-radius:10px;
-`
-
-const StyledHeaderTitle = styled.h4`
-  color: green;
-  font-size: 20px;
-  font-weight: 700;
-  margin: ${(props) => props.theme.spacing[2]}px 0 0;
-  padding: 0;
-  margin-top:15px;
-`
-
-const StyledTitle = styled.h4`
-  color: ${(props) => props.theme.color.grey[600]};
-  font-size: 20px;
-  font-weight: 700;
-  margin: ${(props) => props.theme.spacing[2]}px 0 0;
-  padding: 0;
-  margin-bottom:10px;
-  margin-top:-13px;  
-`
-
-const StyledBigTitle = styled.h4`
-  color: ${(props) => props.theme.color.grey[600]};
-  font-size: 20px;
-  font-weight: 700;
-  margin: ${(props) => props.theme.spacing[2]}px 0 0;
-  padding: 0;
-  margin-top:13px;  
 `
 
 const BroccoliStyledCard = styled.div`
@@ -559,4 +333,125 @@ const BroccoliStyledCard = styled.div`
   flex-direction: column;
 `
 
-export default Subpage23
+
+const StyledLoadingWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+`
+
+const StyledRow = styled.div`
+  display: flex;
+  margin-bottom: ${(props) => props.theme.spacing[4]}px;
+  flex-flow: row wrap;
+  width:140%;
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+`
+
+const StyledCardWrapper = styled.div`
+  display: flex;
+  width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
+  position: relative;
+`
+
+const StyledTitle = styled.h4`
+  color: ${(props) => props.theme.color.grey[600]};
+  font-size: 20px;
+  font-weight: 700;
+  margin: ${(props) => props.theme.spacing[2]}px 0 0;
+  padding: 0;
+  margin-bottom:10px;
+  margin-top:-13px;
+  
+`
+
+const StyledSmallTitle = styled.h5`
+  color: ${(props) => props.theme.color.grey[600]};
+  font-size: 15px;
+  font-weight: 700;
+  margin: ${(props) => props.theme.spacing[2]}px 0 0;
+  padding: 0;
+`
+const StyledBigTitle = styled.h4`
+  color: ${(props) => props.theme.color.grey[600]};
+  font-size: 20px;
+  font-weight: 700;
+  margin: ${(props) => props.theme.spacing[2]}px 0 0;
+  padding: 0;
+  margin-top:13px;
+  
+`
+
+const StyledHeaderTitle = styled.h4`
+  color: green;
+  font-size: 20px;
+  font-weight: 700;
+  margin: ${(props) => props.theme.spacing[2]}px 0 0;
+  padding: 0;
+  margin-top:15px;
+`
+
+const StyledContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color:white;
+  border-radius:10px;
+`
+
+const StyledCarrotPartContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color:#e4b978;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  width:100%;
+`
+const StyledBroccoliPartContent = styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color:#94c592;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+  width:100%;
+`
+
+
+const StyledSpacer = styled.div`
+  height: ${(props) => props.theme.spacing[4]}px;
+  width: ${(props) => props.theme.spacing[4]}px;
+`
+
+const StyledDetails = styled.div`
+  margin-top: ${(props) => props.theme.spacing[2]}px;
+  text-align: center;
+`
+
+const StyledDetail = styled.div`
+  color: ${(props) => props.theme.color.grey[500]};
+`
+
+const StyledInsight = styled.div`
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-radius: 8px;
+  background: #fffdfa;
+  color: #aa9584;
+  width: 100%;
+  margin-top: 12px;
+  line-height: 32px;
+  font-size: 13px;
+  border: 1px solid #e6dcd5;
+  text-align: center;
+  padding: 0 12px;
+`
+
+export default FarmCards
