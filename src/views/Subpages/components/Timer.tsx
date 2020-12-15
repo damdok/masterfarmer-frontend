@@ -1,13 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import Button from '../../../components/Button'
-import Card from '../../../components/Card'
-import CardContent from '../../../components/CardContent'
-import CardIcon from '../../../components/CardIcon'
-import Label from '../../../components/Label'
-import Value from '../../../components/Value'
-import CropsIcon from '../../../components/CropsIcon'
-import { getBalanceNumber } from '../../../utils/formatBalance'
 
 interface TimerComponentProps {
   pid: number
@@ -15,9 +7,7 @@ interface TimerComponentProps {
 }
 
 const TimerComponent: React.FC<TimerComponentProps> = ({ pid, remaintime }) => {
-  // const earnings = useEarnings(pid)
-  // const [pendingTx, setPendingTx] = useState(false)
-
+  
   const calculateTimeLeft = () => {
 
     var date = new Date();
@@ -64,8 +54,7 @@ const TimerComponent: React.FC<TimerComponentProps> = ({ pid, remaintime }) => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());  
     }, 1000);
-
-      // Clear timeout if the component is unmounted
+  
     return () => clearTimeout(timer);
   });
 
@@ -136,12 +125,6 @@ const StyledTimeArea = styled.div`
   font-size: 30px;
   color:#5b3926;
 `
-const StyledTimediv = styled.div`
-  padding: 10px;
-  border-radius: 3px;
-  background: #00BF96;
-  display: inline-block;
-`
 const StyledTimeSpan = styled.span`
   padding: 15px;
   border-radius: 3px;
@@ -169,6 +152,5 @@ const StyledCardHeader = styled.div`
   font-size:22px;
   color:#5b3926;
 `
-
 
 export default TimerComponent

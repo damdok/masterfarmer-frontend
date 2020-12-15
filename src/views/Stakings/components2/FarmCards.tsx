@@ -4,9 +4,7 @@ import Countdown, { CountdownRenderProps } from 'react-countdown'
 import styled, { keyframes } from 'styled-components'
 import { useWallet } from 'use-wallet'
 import Button from '../../../components/CardButton'
-import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
-import CardIcon from '../../../components/CardIcon'
 import Loader from '../../../components/Loader'
 import Spacer from '../../../components/Spacer'
 import { Farm } from '../../../contexts/Farms'
@@ -26,7 +24,6 @@ interface FarmWithStakedValue extends Farm, StakedValue {
   
 const FarmCards: React.FC = () => {
   const [farms] = useFarms()
-  const { account } = useWallet()
   const stakedValue = useAllStakedValue()
 
   const cropsIndex = farms.findIndex(
@@ -161,20 +158,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
               </StyledHeaderTitle>
 
               <Spacer />
-
-              {/* <span>
-                {farm.tokenAmount
-                  ? (farm.tokenAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                {farm.tokenSymbol}
-              </span>
-              <span>
-                {farm.wethAmount
-                  ? (farm.wethAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                ETH
-              </span> */}
-            
+           
 
             <Button
               disabled={!poolActive}
@@ -208,10 +192,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
             </StyledHeaderTitle>              
 
             <img src={broccoli} height="150" width ="150" style={{ marginTop: 20 }} />
-
-            <StyledTitle>{farm.name}</StyledTitle>
-
-           
+            <StyledTitle>{farm.name}</StyledTitle>           
             
             <StyledBigTitle>{farm.lpToken.toUpperCase()}</StyledBigTitle>
             
@@ -227,21 +208,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
               </StyledHeaderTitle>
 
               <Spacer />
-          
-
-              {/* <span>
-                {farm.tokenAmount
-                  ? (farm.tokenAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                {farm.tokenSymbol}
-              </span>
-              <span>
-                {farm.wethAmount
-                  ? (farm.wethAmount.toNumber() || 0).toLocaleString('en-US')
-                  : '-'}{' '}
-                ETH
-              </span> */}
-            
+                      
 
             <Button
               disabled={!poolActive}
@@ -370,13 +337,6 @@ const StyledTitle = styled.h4`
   
 `
 
-const StyledSmallTitle = styled.h5`
-  color: ${(props) => props.theme.color.grey[600]};
-  font-size: 15px;
-  font-weight: 700;
-  margin: ${(props) => props.theme.spacing[2]}px 0 0;
-  padding: 0;
-`
 const StyledBigTitle = styled.h4`
   color: ${(props) => props.theme.color.grey[600]};
   font-size: 20px;
@@ -404,54 +364,9 @@ const StyledContent = styled.div`
   border-radius:10px;
 `
 
-const StyledCarrotPartContent = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background-color:#e4b978;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
-  width:100%;
-`
-const StyledBroccoliPartContent = styled.div`
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  background-color:#94c592;
-  border-top-left-radius:10px;
-  border-top-right-radius:10px;
-  width:100%;
-`
-
-
 const StyledSpacer = styled.div`
   height: ${(props) => props.theme.spacing[4]}px;
   width: ${(props) => props.theme.spacing[4]}px;
-`
-
-const StyledDetails = styled.div`
-  margin-top: ${(props) => props.theme.spacing[2]}px;
-  text-align: center;
-`
-
-const StyledDetail = styled.div`
-  color: ${(props) => props.theme.color.grey[500]};
-`
-
-const StyledInsight = styled.div`
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  border-radius: 8px;
-  background: #fffdfa;
-  color: #aa9584;
-  width: 100%;
-  margin-top: 12px;
-  line-height: 32px;
-  font-size: 13px;
-  border: 1px solid #e6dcd5;
-  text-align: center;
-  padding: 0 12px;
 `
 
 export default FarmCards

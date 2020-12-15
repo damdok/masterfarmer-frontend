@@ -1,24 +1,16 @@
 import BigNumber from 'bignumber.js'
 import React, { useEffect, useState } from 'react'
-import CountUp from 'react-countup'
 import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
-import Card from '../../components/Card'
-import CardContent from '../../components/CardContent'
-import Label from '../../components/Label'
 import Container from '../../components/Container'
 import Spacer from '../../components/Spacer'
 import Page from '../../components/Page'
-import Value from '../../components/Value'
-import CropsIcon from '../../components/CropsIcon'
 import ChangedCropsIcon from '../../components/ChangedCropsIcon'
-import Button from '../../components/Button'
 import useAllEarnings from '../../hooks/useAllEarnings'
 import useAllStakedValues from '../../hooks/useAllStakedValues'
-import useFarms from '../../hooks/useFarms'
 import useTokenBalance from '../../hooks/useTokenBalance'
 import useCrops from '../../hooks/useCrops'
-import { getCropsAddress, getCropsSupply, totalgetStaked, totalgetClaimableRewards, getMasterChefContract } from '../../crops/utils'
+import { getCropsAddress, getCropsSupply } from '../../crops/utils'
 import { getBalanceNumber } from '../../utils/formatBalance'
 
 
@@ -48,9 +40,6 @@ const Balances: React.FC = () => {
       .div(new BigNumber(10).pow(18))
       .toNumber()
   }
-
-  const [farms] = useFarms() 
-  
  
 
   useEffect(() => {

@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-
 import { Container, TabLinks, Button, TabContent, TabBottomline, Section } from './styles';
-
 import Balances from '../../../Infos/Balances';
 import Stakings from '../../../Stakings/Stakings';
 

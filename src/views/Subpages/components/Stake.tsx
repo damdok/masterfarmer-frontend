@@ -5,7 +5,6 @@ import { Contract } from 'web3-eth-contract'
 import Button from '../../../components/Button'
 import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
-import CardIcon from '../../../components/CardIcon'
 import SmallCardIcon from '../../../components/SmallCardIcon'
 import Label from '../../../components/Label'
 import Value from '../../../components/Value'
@@ -29,8 +28,7 @@ interface StakeProps {
 
 const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
-
-  const allowance = useAllowance(lpContract)  
+  
   const { onApprove } = useApprove(lpContract)
   const tokenBalance = useTokenBalance(lpContract.options.address)
   const stakedBalance = useStakedBalance(pid)
@@ -60,7 +58,6 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
     try {
       setRequestedApproval(true)
       const txHash = await onApprove()
-
       // user rejected tx or didn't go thru
       if (!txHash) {        
         setRequestedApproval(false)
@@ -112,8 +109,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
             <SmallCardIcon><img src={chef} height="32" style={{ marginTop: 0 }} /> </SmallCardIcon>
             <Value value={getBalanceNumber(stakedBalance)} />
             <Label text={`${tokenName} Staked`} />
-            <Label1>(0.83ETH+14.5CROPS)</Label1>
-            
+            <Label1>(0.83ETH+14.5CROPS)</Label1>          
           </StyledCardHeader>
           <StyledCardActions>
             <Button

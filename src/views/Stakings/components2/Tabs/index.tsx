@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-
 import { Container, TabLinks, Button, TabContent, TabBottomline, Section } from './styles';
-
-import Stakings from '../../Stakings';
 import Subpage21 from '../../../Subpages/Subpage21';
 
 const Tabs: React.FC = () => {
@@ -25,8 +22,7 @@ const Tabs: React.FC = () => {
           type="button"
           className={nolock}
           onClick={() => handleTabLink('nolock')}
-        >
-          
+        >          
         </Button>        
       </TabLinks>
       <TabBottomline>        
