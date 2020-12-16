@@ -8,7 +8,7 @@ import CardContent from '../../../components/CardContent'
 import Label from '../../../components/Label'
 import Spacer from '../../../components/Spacer'
 import Value from '../../../components/Value'
-import CropsIcon from '../../../components/CropsIcon'
+import ChangedCropsIcon from '../../../components/ChangedCropsIcon'
 import useAllEarnings from '../../../hooks/useAllEarnings'
 import useAllStakedValue from '../../../hooks/useAllStakedValue'
 import useFarms from '../../../hooks/useFarms'
@@ -85,7 +85,7 @@ const Balances: React.FC = () => {
         <CardContent>
           <StyledBalances>
             <StyledBalance>
-              <CropsIcon />
+              <ChangedCropsIcon />
               <Spacer />
               <div style={{ flex: 1 }}>
                 <Label text="Your CROPS Balance" />

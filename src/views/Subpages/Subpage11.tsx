@@ -17,7 +17,8 @@ interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
 
-const Subpage11: React.FC = () => {
+
+const Subpage11: React.FC = () => {  
   
   const [farms] = useFarms()
   const stakedValue = useAllStakedValue()
@@ -34,6 +35,7 @@ const Subpage11: React.FC = () => {
   const BLOCKS_PER_YEAR = new BigNumber(365)
   const CROPS_PER_BLOCK = new BigNumber(1)
   
+  /*
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
       const farmWithStakedValue = {
@@ -49,6 +51,7 @@ const Subpage11: React.FC = () => {
       }
 
       const newFarmRows = [...farmRows]
+      console.log("newFarmRows",newFarmRows)
       const newindex = newFarmRows.length - 1
       if(newindex == 0){
         if (newFarmRows[newindex].length === 3) {
@@ -69,7 +72,7 @@ const Subpage11: React.FC = () => {
     [[]],
   )
   
-console.log("rows",rows)
+console.log("rows",rows)*/
 
  /*
   localStorage.setItem('pid', JSON.stringify(rows[0][0].pid))
@@ -89,9 +92,13 @@ console.log("rows",rows)
   //console.log('lpTokenAddress', lpTokenAddress)
   */
 
-  const pid = rows[0][0].pid
-  const lpToken = rows[0][0].lpToken
-  const lpTokenAddress = rows[0][0].lpTokenAddress  
+  //const pid = rows[0][0].pid
+  //const lpToken = rows[0][0].lpToken
+  //const lpTokenAddress = rows[0][0].lpTokenAddress 
+  
+  const pid = 0
+  const lpToken = "CROPS-ETH UNI-V2 LP"
+  const lpTokenAddress = "0x1889ec635e4399ce7629841ae65eed09949e64a7"
   
   const { ethereum } = useWallet()
 

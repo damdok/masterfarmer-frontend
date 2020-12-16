@@ -39,7 +39,7 @@ const Subpage31: React.FC = () => {
   const CROPS_PER_BLOCK = new BigNumber(1)
 
   
-  
+  /*
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
 
@@ -75,7 +75,7 @@ const Subpage31: React.FC = () => {
       return newFarmRows
     },
     [[]],
-  )
+  )*/
  
   /*
   localStorage.setItem('pid', JSON.stringify(rows[2][0].pid))
@@ -92,9 +92,13 @@ const Subpage31: React.FC = () => {
   console.log('lpTokenAddress', lpTokenAddress)
   */
 
-  const pid = rows[2][0].pid
-  const lpToken = rows[2][0].lpToken
-  const lpTokenAddress = rows[2][0].lpTokenAddress  
+  //const pid = rows[2][0].pid
+  //const lpToken = rows[2][0].lpToken
+  //const lpTokenAddress = rows[2][0].lpTokenAddress
+  
+  const pid = 4
+  const lpToken = "CROPS-WBTC UNI-V2 LP"
+  const lpTokenAddress = "0x1889ec635e4399ce7629841ae65eed09949e64a7"
   
   const { ethereum } = useWallet()
 

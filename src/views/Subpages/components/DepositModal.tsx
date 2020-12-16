@@ -29,7 +29,7 @@ const DepositModal: React.FC<DepositModalProps> = ({
   }, [max])
 
   useEffect(() => {    
-    if (timeLock && pid != 0 && pid != 4) {
+    if (timeLock && pid != 0 && pid != 3 && pid != 4 && pid != 5) {
       const myValueInLocalStorage = "myValueInLocalStorage" + pid // pid
       const date = new Date();
       const dt = date.getTime()/1000;

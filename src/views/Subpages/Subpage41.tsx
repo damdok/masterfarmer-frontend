@@ -34,7 +34,7 @@ const Subpage41: React.FC = () => {
 
   const BLOCKS_PER_YEAR = new BigNumber(365)
   const CROPS_PER_BLOCK = new BigNumber(1)  
-  
+  /*
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
 
@@ -70,7 +70,8 @@ const Subpage41: React.FC = () => {
       return newFarmRows
     },
     [[]],
-  )
+  )*/
+  
   
   /*
   localStorage.setItem('pid', JSON.stringify(rows[3][0].pid))
@@ -87,9 +88,13 @@ const Subpage41: React.FC = () => {
   console.log('lpTokenAddress', lpTokenAddress)
   */
 
-  const pid = rows[3][0].pid
-  const lpToken = rows[3][0].lpToken
-  const lpTokenAddress = rows[3][0].lpTokenAddress
+ //const pid = rows[3][0].pid
+ //const lpToken = rows[3][0].lpToken
+ //const lpTokenAddress = rows[3][0].lpTokenAddress
+
+  const pid = 5
+  const lpToken = "CROPS-SURF UNI-V2 LP"
+  const lpTokenAddress = "0x1889ec635e4399ce7629841ae65eed09949e64a7"
   
   const { ethereum } = useWallet()
 

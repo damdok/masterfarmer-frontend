@@ -7,6 +7,7 @@ import Card from '../../../components/Card'
 import CardContent from '../../../components/CardContent'
 import SmallCardIcon from '../../../components/SmallCardIcon'
 import Label from '../../../components/Label'
+import Spacer from '../../../components/Spacer'
 import Value from '../../../components/Value'
 import useAllowance from '../../../hooks/useAllowance'
 import useApprove from '../../../hooks/useApprove'
@@ -29,11 +30,13 @@ interface StakeProps {
 const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
   const [requestedApproval, setRequestedApproval] = useState(false)
   
+  const allowance = useAllowance(lpContract)
   const { onApprove } = useApprove(lpContract)
   const tokenBalance = useTokenBalance(lpContract.options.address)
   const stakedBalance = useStakedBalance(pid)
   const { onStake } = useStake(pid)
   const { onUnstake } = useUnstake(pid)
+  console.log("allowance44",allowance)
 
   const [onPresentDeposit] = useModal(
     <DepositModal
@@ -112,17 +115,27 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
             <Label1>(0.83ETH+14.5CROPS)</Label1>          
           </StyledCardHeader>
           <StyledCardActions>
-            <Button
-              disabled={!stakedBalance.eq(new BigNumber(0)) && calculateTimeLeft()}
-              text="Unstake"
-              onClick={onPresentWithdraw}
-            />
-            <StyledActionSpacer />
-            <Button 
-              disabled={calculateTimeLeft()}
-              text="Stake"
-              onClick={onPresentDeposit}>
-            </Button>
+            {!allowance.toNumber() ? (
+              <Button
+                disabled={requestedApproval}
+                onClick={handleApprove}
+                text={`Approve ${tokenName}`}
+              />
+            ) : (
+              <>
+                <Button
+                  disabled={stakedBalance.eq(new BigNumber(0))}
+                  text="Unstake"
+                  onClick={onPresentWithdraw}
+                />
+                <Spacer/>
+                <Button 
+                  disabled={calculateTimeLeft()}
+                  text="Stake"
+                  onClick={onPresentDeposit}>
+                </Button>
+              </>
+            )}
           </StyledCardActions>
         </StyledCardContentInner>
       </CardContent>

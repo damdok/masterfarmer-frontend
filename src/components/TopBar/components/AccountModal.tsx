@@ -14,7 +14,7 @@ import ModalContent from '../../ModalContent'
 import ModalTitle from '../../ModalTitle'
 import Spacer from '../../Spacer'
 import Value from '../../Value'
-import CropsIcon from '../../../components/CropsIcon'
+import ChangedCropsIcon from '../../../components/ChangedCropsIcon'
 
 const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
   const { account, reset } = useWallet()
@@ -36,7 +36,7 @@ const AccountModal: React.FC<ModalProps> = ({ onDismiss }) => {
         <div style={{ display: 'flex' }}>
           <StyledBalanceWrapper>
             <CardIcon>
-              <CropsIcon />
+              <ChangedCropsIcon />
             </CardIcon>
             <StyledBalance>
               <Value value={getBalanceNumber(cropsBalance)} />
