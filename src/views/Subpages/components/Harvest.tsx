@@ -28,7 +28,7 @@ const Harvest: React.FC<HarvestProps> = ({ pid }) => {
           <SmallCardIcon><img src={chef} height="32" style={{ marginTop: 0 }} /> </SmallCardIcon>
             <Value value={getBalanceNumber(earnings)} />
             <Label text="CROPS Earned" />
-            <Label1>(0.000118ETH-0.60USD)</Label1>
+            <Label1></Label1>
           </StyledCardHeader>
           <StyledCardActions>
             <Button

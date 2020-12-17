@@ -81,6 +81,7 @@ export const Footnote = styled.div`
   font-family: 'Arial-Rounded', sans-serif;
   font-size: 25px;
   padding: 8px 20px;
+  margin-top: 20px;
   text-align: center;
   font-weight: 700;
   color: ${(props) => props.theme.color.grey[900]};  

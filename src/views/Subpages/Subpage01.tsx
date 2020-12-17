@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
 import Label from '../../components/Label'
 import Spacer from '../../components/Spacer'
-import CropsIcon from '../../components/CropsIcon'
+import ChangedCropsIcon from '../../components/ChangedCropsIcon'
 import useAllEarnings from '../../hooks/useAllEarnings'
 import useAllStakedValue from '../../hooks/useAllStakedValue'
 import useFarms from '../../hooks/useFarms'
@@ -38,14 +38,12 @@ const Subpage01: React.FC = () => {
       </StyledbrWrapper>
 
       <StyledBalance>
-        <CropsIcon />
+        <ChangedCropsIcon />
         <Spacer />
         <div style={{ flex: 1 }}>
           <StyledValue>
-            {!!account ? getBalanceNumber(cropsBalance)+"  CROPS" : 'Locked'}
+            {!!account ? getBalanceNumber(cropsBalance)+" My CROPS" : 'Locked'}
           </StyledValue>
-          <Label text="My Balance" />
-          <Label text="(0.0016ETH/0.80USD)" />
         </div>
       </StyledBalance>
 

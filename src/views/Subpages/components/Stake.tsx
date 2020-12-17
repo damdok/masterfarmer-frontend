@@ -111,7 +111,7 @@ const Stake: React.FC<StakeProps> = ({ lpContract, pid, tokenName }) => {
             <SmallCardIcon><img src={chef} height="32" style={{ marginTop: 0 }} /> </SmallCardIcon>
             <Value value={getBalanceNumber(stakedBalance)} />
             <Label text={`${tokenName} Staked`} />
-            <Label1>(0.83ETH+14.5CROPS)</Label1>          
+            <Label1></Label1>          
           </StyledCardHeader>
           <StyledCardActions>
             {!allowance.toNumber() ? (
