@@ -72,6 +72,9 @@ const Balances: React.FC = () => {
       </StyledTitle>
 
       <StyledFlexLayout>
+        <StyledItemblankLayout>          
+        </StyledItemblankLayout>
+
         <StyledItemLayout>
           <StyledBalances>
             <ChangedCropsIcon />
@@ -84,7 +87,6 @@ const Balances: React.FC = () => {
             {"My Balance"}
           </StyledSubValue>
         </StyledItemLayout>
-
         <StyledItemLayout>
           <StyledBalances>
             <ChangedCropsIcon />
@@ -97,9 +99,17 @@ const Balances: React.FC = () => {
             {"Total CROPS Supply"}
           </StyledSubValue>
         </StyledItemLayout>
+
+        <StyledItemblankLayout>          
+        </StyledItemblankLayout>
+
       </StyledFlexLayout>
       <Spacer />
       <StyledFlexLayout>
+
+        <StyledItemblankLayout>          
+        </StyledItemblankLayout>
+
         <StyledItemLayout>
           <StyledBalances>
             <ChangedCropsIcon />
@@ -125,6 +135,10 @@ const Balances: React.FC = () => {
             {"My Total Claimable Rewards"}
           </StyledSubValue>
         </StyledItemLayout>
+
+        <StyledItemblankLayout>          
+        </StyledItemblankLayout>
+
       </StyledFlexLayout>
 
     </Container>
@@ -135,8 +149,8 @@ const Balances: React.FC = () => {
 
 const StyledBalances = styled.div`
   display: flex;
-  align-items: center;
-  justify-content: center
+  align-items: left;
+  justify-content: left
 `
 
 
@@ -178,6 +192,11 @@ const StyledFlexLayout = styled.div`
 const StyledItemLayout = styled.div`
   display: block;
   width: 50%; 
+`
+
+const StyledItemblankLayout = styled.div`
+  display: block;
+  width: 20%; 
 `
 
 

@@ -61,6 +61,8 @@ const StyledempLink = styled(NavLink)`
   background: ${(props) => props.theme.color.grey[900]};
   padding-left: ${(props) => props.theme.spacing[3]}px;
   padding-right: ${(props) => props.theme.spacing[3]}px;
+  padding-bottom: ${(props) => props.theme.spacing[1]}px;
+  margin-top: ${(props) => props.theme.spacing[1]}px;
   text-decoration: none;
   &:hover {
     color: ${(props) => props.theme.color.grey[500]};
@@ -68,10 +70,7 @@ const StyledempLink = styled(NavLink)`
   &.active {
     color: ${(props) => props.theme.color.primary.main};
   }
-  @media (max-width: 400px) {
-    padding-left: ${(props) => props.theme.spacing[2]}px;
-    padding-right: ${(props) => props.theme.spacing[2]}px;
-  }
+  
 `
 
 const StyledAbsoluteLink = styled.a`
@@ -100,7 +99,8 @@ const StyledecolorAbsoluteLinkecolor = styled.a`
   background: ${(props) => props.theme.color.grey[700]};
   padding-left: ${(props) => props.theme.spacing[3]}px;
   padding-right: ${(props) => props.theme.spacing[3]}px;
-  padding-top: ${(props) => props.theme.spacing[0]}px;
+  padding-bottom: ${(props) => props.theme.spacing[1]}px;
+  margin-top: ${(props) => props.theme.spacing[1]}px;
   text-decoration: none;
   &:hover {
     color: ${(props) => props.theme.color.grey[500]};
