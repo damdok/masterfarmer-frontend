@@ -24,12 +24,12 @@ export const INTEGERS = {
 
 export const contractAddresses = {
   crops: { 
-    3: '0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+    3: '0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
     //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
     //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
   },
   masterChef: {
-    3: '0xEFA1F98Ab13B51f76C3208b580Ea43561C0992ef',
+    3: '0xd0a62f584329Ed7272225d33186d52d5311987Af',
     //42: '0xEFa7b6952535b70807ce012D19D13d18970Bb58d',
     //42: '0x55d6cb2EC359Af488f3BC281F17054f8160f7d75',//original
   },  
@@ -45,12 +45,12 @@ export const supportedPools = [
   {
     pid: 0,
     lpAddresses: {
-      3:'0x1889ec635e4399ce7629841ae65eed09949e64a7',
+      3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      3:'0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+      3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
@@ -63,12 +63,12 @@ export const supportedPools = [
   {
     pid: 1,
     lpAddresses: {
-      3:'0x1889ec635e4399ce7629841ae65eed09949e64a7',
+      3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      3:'0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+      3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
@@ -80,12 +80,12 @@ export const supportedPools = [
   {
     pid: 2,
     lpAddresses: {
-      3:'0x1889ec635e4399ce7629841ae65eed09949e64a7',
+      3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      3:'0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+      3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
@@ -97,12 +97,12 @@ export const supportedPools = [
   {
     pid: 3,
     lpAddresses: {
-      3:'0x1889ec635e4399ce7629841ae65eed09949e64a7',
+      3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      3:'0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+      3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
@@ -114,12 +114,12 @@ export const supportedPools = [
   {
     pid: 4,
     lpAddresses: {
-      3:'0x1889ec635e4399ce7629841ae65eed09949e64a7',
+      3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      3:'0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+      3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
@@ -131,12 +131,12 @@ export const supportedPools = [
   {
     pid: 5,
     lpAddresses: {
-      3:'0x1889ec635e4399ce7629841ae65eed09949e64a7',
+      3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
       //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
-      3:'0xB81dd2fcFF326C453a16bda1532081D2abdbEAF3',
+      3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
       //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },

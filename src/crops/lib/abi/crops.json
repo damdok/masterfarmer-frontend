@@ -83,12 +83,6 @@
 		"anonymous": false,
 		"inputs": [
 			{
-				"indexed": true,
-				"internalType": "uint256",
-				"name": "epoch",
-				"type": "uint256"
-			},
-			{
 				"indexed": false,
 				"internalType": "uint256",
 				"name": "decayrate",
@@ -307,13 +301,7 @@
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "epoch",
-				"type": "uint256"
-			}
-		],
+		"inputs": [],
 		"name": "burn",
 		"outputs": [
 			{

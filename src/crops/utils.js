@@ -176,12 +176,10 @@ export const getStaked = async (masterChefContract, pid, account) => {
   }
 }
 
-export const totalBurn = async (crops, account) => {
-
+export const totalBurn = async (masterChefContract, account) => {
   try {
-
-    const state = await crops.contracts.crops.methods
-      .totalBurn()
+    const state = await masterChefContract.methods
+      .globalDecay()
       .send({ from: account })
       .on('transactionHash', (tx) => {
         console.log(tx)

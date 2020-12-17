@@ -98,7 +98,7 @@ const Subpage31: React.FC = () => {
   
   const pid = 4
   const lpToken = "CROPS-WBTC UNI-V2 LP"
-  const lpTokenAddress = "0x1889ec635e4399ce7629841ae65eed09949e64a7"
+  const lpTokenAddress = "0x985a7a208993e4cc96b1c57d946ebf0083f2671f"
   
   const { ethereum } = useWallet()
 
