@@ -17,6 +17,7 @@ import useBlock from './useBlock'
 export interface StakedValue {
   tokenAmount: BigNumber
   wethAmount: BigNumber
+  tokenAmountWholeLP: BigNumber
   totalWethValue: BigNumber
   tokenPriceInWeth: BigNumber
   poolWeight: BigNumber
@@ -52,6 +53,9 @@ const useAllStakedValue = () => {
           ),
       ),
     )
+    //console.log("balances",balances)
+    //console.log("xxxmasterChefContract:",masterChefContract)
+    //console.log("xxxwethContact:",wethContact)
 
     setBalance(balances)
   }, [account, masterChefContract, crops])

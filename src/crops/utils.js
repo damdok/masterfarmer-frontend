@@ -111,6 +111,9 @@ export const getTotalLPWethValue = async (
   return {
     tokenAmount,
     wethAmount,
+    tokenAmountWholeLP,
+    portionLp,
+    lpContractWeth,
     totalWethValue: totalLpWethValue.div(new BigNumber(10).pow(18)),
     tokenPriceInWeth: wethAmount.div(tokenAmount),
     poolWeight: await getPoolWeight(masterChefContract, pid),
@@ -128,7 +131,6 @@ export const getCropsSupply = async (crops) => {
 }
 
 export const stake = async (masterChefContract, pid, amount, account) => {
-
   return masterChefContract.methods
     .deposit(
       pid,
@@ -142,7 +144,6 @@ export const stake = async (masterChefContract, pid, amount, account) => {
 }
 
 export const unstake = async (masterChefContract, pid, amount, account) => {
-
   return masterChefContract.methods
     .withdraw(
       pid,
@@ -220,8 +221,4 @@ export const totalgetStaked = async (masterChefContract, account) => {
   } catch {
     return new BigNumber(0)
   }
-}
-
-export const totalgetClaimableRewards = () => {    
-  return 0
 }

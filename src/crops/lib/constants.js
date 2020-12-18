@@ -26,17 +26,14 @@ export const contractAddresses = {
   crops: { 
     3: '0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
     //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-    //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
   },
   masterChef: {
     3: '0xd0a62f584329Ed7272225d33186d52d5311987Af',
     //42: '0xEFa7b6952535b70807ce012D19D13d18970Bb58d',
-    //42: '0x55d6cb2EC359Af488f3BC281F17054f8160f7d75',//original
   },  
   weth: {
-    3: '0x2D56ed810bb4Aa86b715f623615A34eE0DEA5bbC',//self
+    3: '0xc778417e063141139fce010982780140aa0cd5ab',
     //42: '0x2bfCCE707529264856d87DEeeeB64cdcFf755a84',
-    //42: '0xf3a6679b266899042276804930b3bfbaf807f15b',//original
   },
 }
 
@@ -47,12 +44,10 @@ export const supportedPools = [
     lpAddresses: {
       3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
-      //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
       3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-      //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
     symbol: 'CROPS-ETH UNI-V2 LP',
@@ -65,12 +60,10 @@ export const supportedPools = [
     lpAddresses: {
       3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
-      //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
       3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-      //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
     symbol: 'CROPS-ETH UNI-V2 LP-3',
@@ -82,12 +75,10 @@ export const supportedPools = [
     lpAddresses: {
       3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
-      //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
       3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-      //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-ETH',
     symbol: 'CROPS-ETH UNI-V2 LP-7',
@@ -99,12 +90,10 @@ export const supportedPools = [
     lpAddresses: {
       3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x85b92eb6c67789f60a1b6b0d934196a2c35aa46f',
-      //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
       3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-      //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-USDC',
     symbol: 'CROPS-USDC UNI-V2 LP',
@@ -116,12 +105,10 @@ export const supportedPools = [
     lpAddresses: {
       3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
-      //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
       3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-      //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-WBTC',
     symbol: 'CROPS-WBTC UNI-V2 LP',
@@ -133,12 +120,10 @@ export const supportedPools = [
     lpAddresses: {
       3:'0x985a7a208993e4cc96b1c57d946ebf0083f2671f',
       //42: '0x66412bbbe59af66a56357fc348e3c33f1788daa3',
-      //42: '0x8aab1e7bb5b173ae809c6a0a9b769985d1b0d789',//original
     },
     tokenAddresses: {
       3:'0x0D985cC85A98e6F9cf5421DAaf937BF4EdE4d709',
       //42: '0x02CECED9749cAfC8473468a51F9BE0b61a2a0542',
-      //42: '0x6c524656cf44ce483f867b401983f5F2D00eEDFa',//original
     },
     name: 'CROPS-SURF',
     symbol: 'CROPS-SURF UNI-V2 LP',

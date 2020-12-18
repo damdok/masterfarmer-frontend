@@ -196,7 +196,7 @@ const StyledItemLayout = styled.div`
 
 const StyledItemblankLayout = styled.div`
   display: block;
-  width: 20%; 
+  width: 10%; 
 `
 
 

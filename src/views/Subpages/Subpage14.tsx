@@ -1,45 +1,126 @@
 import BigNumber from 'bignumber.js'
-import React, { useCallback,useEffect, useMemo, useState } from 'react'
-import styled, { keyframes } from 'styled-components'
+import useFarms from '../../hooks/useFarms'
+import { Farm } from '../../contexts/Farms'
+import useAllStakedValue, {
+  StakedValue,
+} from '../../hooks/useAllStakedValue'
+import Loader from '../../components/Loader'
+import useCrops from '../../hooks/useCrops'
+import { CountdownRenderProps } from 'react-countdown'
+import { getEarned, getMasterChefContract } from '../../crops/utils'
+import { bnToDec } from '../../utils'
+
+import React, { useMemo, useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { useWallet } from 'use-wallet'
 import Spacer from '../../components/Spacer'
 import Cropsethapy from '../../components/Cropsethapy'
 import Button from '../../components/Button'
-import useFarms from '../../hooks/useFarms'
+import useFarm from '../../hooks/useFarm'
 import Harvest from './components/Harvest'
 import Stake from './components/Stake'
 import { getContract } from '../../utils/erc20'
 import { provider } from 'web3-core'
 import TimerComponent from './components/Timer'
-import { Farm } from '../../contexts/Farms'
-import useAllStakedValue, {StakedValue,} from '../../hooks/useAllStakedValue'
 
 
 interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
 }
 
+interface FarmCardProps {
+  farm: FarmWithStakedValue
+}
+
+const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
+  const [startTime, setStartTime] = useState(0)
+  const [harvestable, setHarvestable] = useState(0)
+
+  const { account } = useWallet()
+  const { lpTokenAddress } = farm
+  const crops = useCrops()
+
+  const renderer = (countdownProps: CountdownRenderProps) => {
+    const { hours, minutes, seconds } = countdownProps
+    const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
+    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes
+    const paddedHours = hours < 10 ? `0${hours}` : hours
+    return (
+      <span style={{ width: '100%' }}>
+        {paddedHours}:{paddedMinutes}:{paddedSeconds}
+      </span>
+    )
+  }
+
+  useEffect(() => {
+    async function fetchEarned() {
+      if (crops) return
+      const earned = await getEarned(
+        getMasterChefContract(crops),
+        lpTokenAddress,
+        account,
+      )
+      setHarvestable(bnToDec(earned))
+    }
+    if (crops && account) {
+      fetchEarned()
+    }
+  }, [crops, lpTokenAddress, account, setHarvestable])
+
+  const poolActive = true // startTime * 1000 - Date.now() <= 0
+  
+  return (
+    <StyledCardWrapper> 
+        {farm.apy
+          ? `${farm.apy
+              .times(new BigNumber(100))
+              .toNumber()
+              .toLocaleString('en-US')
+              .slice(0, -1)}%`
+          : 'Loading ...'}
+          APY
+        <Spacer /> 
+    </StyledCardWrapper>
+  )
+ 
+}
+
 const Subpage14: React.FC = () => {
-  /////
+  const farmId = "CROPS-ETH UNI-V2 LP-7"
+
+  const {
+    pid,
+    lpToken,
+    lpTokenAddress,
+  } = useFarm(farmId) || {
+    pid: 0,
+    lpToken: '',
+    lpTokenAddress: '',
+  }
+  
+  const { ethereum } = useWallet()
+  //
   const [farms] = useFarms()
   const stakedValue = useAllStakedValue()
-
+  //const BLOCKS_PER_YEAR = new BigNumber(2336000)
+  const BLOCKS_PER_YEAR = new BigNumber(365)
+  const CROPS_PER_BLOCK = new BigNumber(1)
   const cropsIndex = farms.findIndex(
     ({ tokenSymbol }) => tokenSymbol === 'CROPS',
-  )
-
-  
+  )  
 
   const cropsPrice =
     cropsIndex >= 0 && stakedValue[cropsIndex]
       ? stakedValue[cropsIndex].tokenPriceInWeth
       : new BigNumber(0)
 
+  //
+  const lpContract = useMemo(() => {
+    return getContract(ethereum as provider, lpTokenAddress)
+  }, [ethereum, lpTokenAddress]) 
 
-  const BLOCKS_PER_YEAR = new BigNumber(365)
-  const CROPS_PER_BLOCK = new BigNumber(1)
+  const localStorageTime = localStorage.getItem('myValueInLocalStorage' + pid)
 
-   /*
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
 
@@ -55,8 +136,11 @@ const Subpage14: React.FC = () => {
           : null,
       }
 
-      
+      console.log("farm111 = ",farm)
+      console.log("farmWithStakedValue = ",farmWithStakedValue)
+
       const newFarmRows = [...farmRows]
+      console.log("newFarmRows",newFarmRows)
       const newindex = newFarmRows.length - 1
       if(newindex == 0){
         if (newFarmRows[newindex].length === 3) {
@@ -75,41 +159,7 @@ const Subpage14: React.FC = () => {
       return newFarmRows
     },
     [[]],
-  )*/
-  
-  /*
-  localStorage.setItem('pid', JSON.stringify(rows[0][2].pid))
-  var savedtemperpid = localStorage.getItem('pid')  
-  const pid = parseInt(savedtemperpid);
-  console.log('pid', pid)
-
-  localStorage.setItem('lpToken', rows[0][2].lpToken)
-  const lpToken = localStorage.getItem('lpToken')
-  console.log('lpToken', lpToken)
-
-  localStorage.setItem('lpTokenAddress', rows[0][2].lpTokenAddress)
-  const lpTokenAddress = localStorage.getItem('lpTokenAddress')
-  console.log('lpTokenAddress', lpTokenAddress)
-  */
-
- //const pid = rows[0][2].pid
- //const lpToken = rows[0][2].lpToken
- //const lpTokenAddress = rows[0][2].lpTokenAddress
-
-  const pid = 2
-  const lpToken = "CROPS-ETH UNI-V2 LP-7"
-  const lpTokenAddress = "0x985a7a208993e4cc96b1c57d946ebf0083f2671f"
-
-  
-  const { ethereum } = useWallet()
-
-  const lpContract = useMemo(() => {
-    return getContract(ethereum as provider, lpTokenAddress)
-  }, [ethereum, lpTokenAddress])
-
-  const localStorageTime = localStorage.getItem('myValueInLocalStorage' + pid)
-
-
+  )
   
     
   return (
@@ -135,7 +185,15 @@ const Subpage14: React.FC = () => {
               <Cropsethapy/>          
               <span style={{ position: "absolute", bottom: 150, left: 65}}>You can unstake</span>
               <span style={{ position: "absolute", bottom: 130, left: 80}}>at any time</span>
-              <span style={{ position: "absolute", bottom: 90, left: 90}}>APY : 12.5%</span>
+              <span style={{ position: "absolute", bottom: 90, left: 80}}>
+                {!!rows[0].length ? (                                                      
+                    <FarmCard farm={rows[0][2]} />
+                  ) : (
+                    <StyledLoadingWrapper>
+                      <Loader text="Farming ..." />
+                    </StyledLoadingWrapper>
+                  )}
+                </span>
               <span style={{ position: "absolute", bottom: 40, left: 60}}>
                 <Button text="Stake Using ETH" size= "sm" onClick={async () => {          
                   }}
@@ -206,6 +264,20 @@ const StyledFarm = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;  
+`
+
+const StyledLoadingWrapper = styled.div`
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+`
+
+const StyledCardWrapper = styled.div`
+  display: flex;
+  width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
+  position: relative;
+  font-color: ${(props) => props.theme.color.grey[900]};
 `
 
 export default Subpage14
