@@ -34,7 +34,6 @@ const Subpage01: React.FC = () => {
   return (
     <StyledWrapper>
       <StyledbrWrapper>
-
       </StyledbrWrapper>
 
       <StyledBalance>
@@ -42,7 +41,7 @@ const Subpage01: React.FC = () => {
         <Spacer />
         <div style={{ flex: 1 }}>
           <StyledValue>
-            {!!account ? getBalanceNumber(cropsBalance)+" My CROPS" : 'Locked'}
+            {!!account ? getBalanceNumber(cropsBalance)+"CROPS" : 'Locked'}
           </StyledValue>
         </div>
       </StyledBalance>

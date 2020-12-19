@@ -1,7 +1,5 @@
 import React from 'react';
-
 import Tabs from '../Tabs';
-
 import { Container, Header, Main } from './styles';
 
 

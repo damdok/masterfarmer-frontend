@@ -2,31 +2,16 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import chef from '../../assets/img/chef.png'
 import { useState } from 'react'
-
-import { useParams } from 'react-router-dom'
 import { useWallet } from 'use-wallet'
-import { provider } from 'web3-core'
 import CardContent from '../../components/CardContent'
 import Card from '../../components/Card'
-import Label from '../../components/Label'
-import Value from '../../components/Value'
-
 import Page from '../../components/Page'
 import Button from '../../components/Button'
 import PageHeader from '../../components/PageHeader'
 import WalletProviderModal from '../../components/WalletProviderModal'
-
 import useModal from '../../hooks/useModal'
-
 import useCrops from '../../hooks/useCrops'
 import useTotalBurn from '../../hooks/useTotalBurn'
-import useFarm from '../../hooks/useFarm'
-import useRedeem from '../../hooks/useRedeem'
-import { getContract } from '../../utils/erc20'
-import { getCropsAddress } from '../../crops/utils'
-
-import BigNumber from 'bignumber.js'
-
 import burn from '../../assets/img/burn.gif'
 import CardIcon from '../../components/CardIcon'
 import Spacer from '../../components/Spacer'
