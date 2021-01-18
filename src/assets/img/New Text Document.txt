@@ -1,0 +1,24 @@
+<Styledimg>
+          <StyledBalance>
+            <div style={{ flex: 1 }}>          
+                <Cropsethapy/>              
+                <span style={{ position: "absolute", bottom: 110, left: 80}}>              
+                  {!!rows[0].length ? (                                                      
+                      <FarmCard farm={rows[0][0]} />
+                    ) : (
+                      <StyledLoadingWrapper>
+                        <Loader text="Farming ..." />
+                      </StyledLoadingWrapper>
+                    )}
+                </span>
+                
+                <span style={{ position: "absolute", bottom: 60, left: 60}}>
+                  <Button 
+                    text="Stake Using ETH" 
+                    size= "sm" 
+                    onClick={onPresentStakingWithETH}
+                  />                
+                </span>
+            </div>
+          </StyledBalance>        
+        </Styledimg>

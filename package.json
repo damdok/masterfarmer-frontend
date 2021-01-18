@@ -1,5 +1,6 @@
 {
   "name": "seconddapp",
+  "homepage": "https://masterfarmer.io",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

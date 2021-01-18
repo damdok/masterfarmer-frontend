@@ -16,17 +16,9 @@ const Home: React.FC = () => {
         subtitle="Stake Uniswap LP Tokens to Claim CROPS"
       />
       <Container>
+        <Spacer/>
         <Balances />
-      </Container>      
-      <Spacer size="lg" />      
-      <Spacer size="lg" />
-      <div
-        style={{
-          margin: '0 auto',
-        }}
-      >
-        
-      </div>
+      </Container>
     </Page>
   )
 }

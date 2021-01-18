@@ -2,14 +2,15 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import chef from '../../assets/img/head.png'
+import title1 from '../../assets/img/title1.png'
 
 const Logo: React.FC = () => {
   return (
     <StyledLogo to="/">
-      <img src={chef} height="32" style={{ marginTop: -4 }} />
+      <img src={chef} height="34" style={{ marginTop: -4 }} />
       <StyledText>
-        <MasterChefText>Master Farmer</MasterChefText>
-      </StyledText>
+        Master Farmer
+      </StyledText>       
     </StyledLogo>
   )
 }

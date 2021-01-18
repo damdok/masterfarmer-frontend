@@ -6,7 +6,6 @@ import useAllStakedValue, {
 } from '../../hooks/useAllStakedValue'
 import Loader from '../../components/Loader'
 import useCrops from '../../hooks/useCrops'
-import { CountdownRenderProps } from 'react-countdown'
 import { getEarned, getMasterChefContract } from '../../crops/utils'
 import { bnToDec } from '../../utils'
 
@@ -20,7 +19,14 @@ import Harvest from './components/Harvest'
 import Stake from './components/Stake'
 import { getContract } from '../../utils/erc20'
 import { provider } from 'web3-core'
-import Wbtccropsapy from '../../components/Wbtccropsapy'
+import Wbtccropsapy from '../../components/stakingsapy/Wbtccropsapy'
+import AutoDepositModal from './components/AutoDepositModal'
+import useModal from '../../hooks/useModal'
+
+import { getAPYNumber } from '../../utils/formatBalance'
+import ApyValue from '../../components/ApyValue'
+
+import usePoolWeight from '../../hooks/usePoolWeight'
 
 interface FarmWithStakedValue extends Farm, StakedValue {
   apy: BigNumber
@@ -31,43 +37,16 @@ interface FarmCardProps {
 }
 
 const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
-  const [startTime, setStartTime] = useState(0)
   const [harvestable, setHarvestable] = useState(0)
 
   const { account } = useWallet()
   const { lpTokenAddress } = farm
   const crops = useCrops()
 
-  const renderer = (countdownProps: CountdownRenderProps) => {
-    const { hours, minutes, seconds } = countdownProps
-    const paddedSeconds = seconds < 10 ? `0${seconds}` : seconds
-    const paddedMinutes = minutes < 10 ? `0${minutes}` : minutes
-    const paddedHours = hours < 10 ? `0${hours}` : hours
-    return (
-      <span style={{ width: '100%' }}>
-        {paddedHours}:{paddedMinutes}:{paddedSeconds}
-      </span>
-    )
-  }
-
-  useEffect(() => {
-    async function fetchEarned() {
-      if (crops) return
-      const earned = await getEarned(
-        getMasterChefContract(crops),
-        lpTokenAddress,
-        account,
-      )
-      setHarvestable(bnToDec(earned))
-    }
-    if (crops && account) {
-      fetchEarned()
-    }
-  }, [crops, lpTokenAddress, account, setHarvestable])
-
-  const poolActive = true // startTime * 1000 - Date.now() <= 0
+  const poolweight = usePoolWeight(2)
   
-  return (
+    
+  /*return (
     <StyledCardWrapper> 
         {farm.apy
           ? `${farm.apy
@@ -79,19 +58,29 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm }) => {
           APY
         <Spacer /> 
     </StyledCardWrapper>
+  )*/
+  return (
+    <StyledCardWrapper>
+      APY:
+        <ApyValue
+          value={getAPYNumber(poolweight)}
+        />
+        %
+        <Spacer /> 
+    </StyledCardWrapper>
   )
  
 }
 
 const Subpage31: React.FC = () => {
-  const farmId = "CROPS-WBTC UNI-V2 LP"
+  const farmId = "WBTC-CROPS UNI-V2 LP"
 
   const {
     pid,
     lpToken,
     lpTokenAddress,
   } = useFarm(farmId) || {
-    pid: 0,
+    pid: 2,
     lpToken: '',
     lpTokenAddress: '',
   }
@@ -115,8 +104,9 @@ const Subpage31: React.FC = () => {
   //
   const lpContract = useMemo(() => {
     return getContract(ethereum as provider, lpTokenAddress)
-  }, [ethereum, lpTokenAddress])   
-
+  }, [ethereum, lpTokenAddress]) 
+  
+  
 
   const rows = farms.reduce<FarmWithStakedValue[][]>(
     (farmRows, farm, i) => {
@@ -133,81 +123,69 @@ const Subpage31: React.FC = () => {
           : null,
       }
 
-      console.log("farm111 = ",farm)
-      console.log("farmWithStakedValue = ",farmWithStakedValue)
+      //console.log("farm111 = ",farm)
+      //console.log("farmWithStakedValue = ",farmWithStakedValue)
 
       const newFarmRows = [...farmRows]
-      console.log("newFarmRows",newFarmRows)
-      const newindex = newFarmRows.length - 1
-      if(newindex == 0){
-        if (newFarmRows[newindex].length === 3) {
-          newFarmRows.push([farmWithStakedValue])
-        } else {
-          newFarmRows[newindex].push(farmWithStakedValue)
-        }
+      //console.log("newFarmRows",newFarmRows)
+      if (newFarmRows[newFarmRows.length - 1].length === 23) {
+        newFarmRows.push([farmWithStakedValue])
       } else {
-        if (newFarmRows[newindex].length === 1) {
-          newFarmRows.push([farmWithStakedValue])
-        } else {
-          newFarmRows[newindex].push(farmWithStakedValue)
-        }
+        newFarmRows[newFarmRows.length - 1].push(farmWithStakedValue)
       }
-        
       return newFarmRows
     },
     [[]],
   )
+  //console.log("rows",rows)
   return (
     <StyledFarm>
-    <StyledWrapper>           
+      <StyledWrapper>
+      <StyledNav>
+        <FirstLink>          
+            <StyledBalance>
+              <Spacer />
+                 <div style={{ flex: 1 }}>
+                    <StyledWrapper>
+                      <Stake
+                        lpContract={lpContract}
+                        pid={pid}
+                        tokenName={lpToken.toUpperCase()}
+                      />
+                    </StyledWrapper>
+                  </div>
+            </StyledBalance>
+        </FirstLink>
+      <SecondLink>
+        <Styledimg>
+          <StyledBalance>          
+                <Wbtccropsapy/>              
+                <span style={{ position: "absolute", bottom: 90, left: 60}}>              
+                  {!!rows[0].length ? (                                                      
+                      <FarmCard farm={rows[0][2]} />
+                    ) : (
+                      <StyledLoadingWrapper>
+                        <Loader text="Farming ..." />
+                      </StyledLoadingWrapper>
+                    )}
+                </span>                
+                
+          </StyledBalance>
+        </Styledimg>
+      </SecondLink>
+      <ThirdLink>
       <StyledBalance>
-      <Spacer />
+        <Spacer />
         <div style={{ flex: 1 }}>
           <StyledWrapper>
-            <Stake
-              lpContract={lpContract}
-              pid={pid}
-              tokenName={lpToken.toUpperCase()}
-            />
+            <Harvest pid={pid} />
           </StyledWrapper>
         </div>
       </StyledBalance>
-
-      <Styledimg>
-        <StyledBalance>
-          <div style={{ flex: 1 }}>          
-              <Wbtccropsapy/>
-              <span style={{ position: "absolute", bottom: 150, left: 65}}>You can unstake</span>
-              <span style={{ position: "absolute", bottom: 130, left: 80}}>at any time</span>
-              <span style={{ position: "absolute", bottom: 90, left: 80}}>
-              
-                {!!rows[0].length ? (                                                      
-                  <FarmCard farm={rows[2][0]} />
-                ) : (
-                  <StyledLoadingWrapper>
-                    <Loader text="Farming ..." />
-                  </StyledLoadingWrapper>
-                )}
-              </span>
-              
-              <span style={{ position: "absolute", bottom: 40, left: 60}}>
-                <Button text="Stake Using ETH" size= "sm" onClick={async () => {          
-                  }}
-                />                
-              </span>
-          </div>
-        </StyledBalance>
-        
-      </Styledimg>
-      <StyledBalance>
-        <Spacer />
-        <Harvest pid={pid} />
-      </StyledBalance>
-      
+      </ThirdLink>
       <Spacer size="lg" />
-    
-    </StyledWrapper>
-    
+      </StyledNav>
+      </StyledWrapper>    
     </StyledFarm>
     
   )
@@ -229,7 +207,6 @@ const StyledWrapper = styled.div`
 
 
 const Styledimg = styled.div`
-  padding-left:20px;
   position: relative;
 `
 
@@ -265,6 +242,42 @@ const StyledCardWrapper = styled.div`
   width: calc((900px - ${(props) => props.theme.spacing[4]}px * 2) / 3);
   position: relative;
   font-color: ${(props) => props.theme.color.grey[900]};
+  font-weight: 500;
+  font-size: 18px;
+  font-family: 'Arial-Rounded', sans-serif;
+`
+
+const FirstLink = styled.div`
+  display:flex;
+  flex:40%;
+  @media(max-width:860px){
+    flex:100%;
+    margin-top:5px;
+  }
+`
+const SecondLink = styled.div`
+  display:flex;
+  flex:30%;
+  @media(max-width:860px){
+    flex:100%;
+    margin-top:5px;
+  } 
+`
+const ThirdLink = styled.div`
+  display:flex;
+  flex:40%;
+  @media(max-width:860px){
+    flex:30%;
+    margin-top:5px;
+  } 
+`
+
+const StyledNav = styled.div`
+  align-items: center;
+  display: flex;
+  @media(max-width:860px){
+    flex-direction: column;
+  }
 `
 
 export default Subpage31

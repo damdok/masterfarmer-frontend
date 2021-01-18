@@ -11,7 +11,7 @@ import useAllStakedValues from '../../hooks/useAllStakedValues'
 import useTokenBalance from '../../hooks/useTokenBalance'
 import useCrops from '../../hooks/useCrops'
 import { getCropsAddress, getCropsSupply } from '../../crops/utils'
-import { getBalanceNumber } from '../../utils/formatBalance'
+import { getBalanceNumber, getFullDisplayBalance } from '../../utils/formatBalance'
 
 
 
@@ -32,6 +32,8 @@ const Balances: React.FC = () => {
       .div(new BigNumber(10).pow(18))
       .toNumber()
   }
+  let ssumEarning = sumEarning.toFixed(3)
+
 
   const allStakedValues = useAllStakedValues()
   let sumStakedValue = 0
@@ -40,7 +42,8 @@ const Balances: React.FC = () => {
       .div(new BigNumber(10).pow(18))
       .toNumber()
   }
- 
+  let ssumStakedValue = sumStakedValue.toFixed(3)
+
 
   useEffect(() => {
     setStart(end)
@@ -63,8 +66,7 @@ const Balances: React.FC = () => {
     }
   }, [crops, setTotalSupply])
 
-  return (
-    <Page>
+  return (    
     <Container>
 
       <StyledTitle>
@@ -115,7 +117,7 @@ const Balances: React.FC = () => {
             <ChangedCropsIcon />
             <Spacer />          
             <StyledValue>
-              {!!account ? sumStakedValue +"  LP Tokens" : 'Locked'}
+              {!!account ? ssumStakedValue +"  LP Tokens" : 'Locked'}
             </StyledValue> 
           </StyledBalances>
           <StyledSubValue>
@@ -128,7 +130,7 @@ const Balances: React.FC = () => {
             <ChangedCropsIcon />
             <Spacer />          
             <StyledValue>
-              {!!account ? sumEarning +"  CROPS" : 'Locked'}
+              {!!account ? ssumEarning +"  CROPS" : 'Locked'}
             </StyledValue> 
           </StyledBalances>
           <StyledSubValue>
@@ -140,9 +142,8 @@ const Balances: React.FC = () => {
         </StyledItemblankLayout>
 
       </StyledFlexLayout>
-
+    <StyledspaceLayout/>
     </Container>
-    </Page>
   )
 }
 
@@ -164,22 +165,22 @@ const StyledValue = styled.div`
 
 
 const StyledSubValue = styled.div`
-  font-family: 'Arial-Rounded', sans-serif;
-  font-size: 16px;
+  font-family: 'Candara', 'Arial-Rounded', sans-serif;
+  font-size: 20px;
   font-weight: 600;
   padding-top: 5px;
   text-align: center;
-  color: ${(props) => props.theme.color.grey[1000]};
+  color: #5b3926;
 `
 
 const StyledTitle = styled.h2`
-  color: ${(props) => props.theme.color.black};
-  font-size: 30px;
+  color: #5b3926;
+  font-size: 40px;
   font-weight: 600;
-  margin: 0;
+  margin-bottom: 20px;
   padding: 52px 0;
   text-align: center;
-
+  font-family: 'Brush Script Std', 'Arial-Rounded', sans-serif;
   > b {
     color: ${(props) => props.theme.color.grey[900]};
   }
@@ -188,15 +189,31 @@ const StyledTitle = styled.h2`
 const StyledFlexLayout = styled.div`
   display: flex;
   justify-content: center;
+  margin-bottom: 20px;
+  @media(max-width:860px){
+    flex-direction: column;
+  }
 `
 const StyledItemLayout = styled.div`
   display: block;
   width: 50%; 
+  @media(max-width:860px){
+    flex-direction: column;
+  }
 `
 
 const StyledItemblankLayout = styled.div`
   display: block;
   width: 10%; 
+  @media(max-width:860px){
+    flex-direction: column;
+  }
+`
+const StyledspaceLayout = styled.div`
+  margin-bottom: 300px; 
+  @media(max-width:860px){
+    flex-direction: column;
+  }
 `
 
 

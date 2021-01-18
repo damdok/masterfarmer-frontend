@@ -40,6 +40,7 @@ export class Crops {
         this.contracts = new Contracts(realProvider, networkId, this.web3, options)
         this.cropsAddress = contractAddresses.crops[networkId]
         this.masterChefAddress = contractAddresses.masterChef[networkId]
+        this.autodepositAddress = contractAddresses.autodeposit[networkId]
         this.wethAddress = contractAddresses.weth[networkId]
     }
 

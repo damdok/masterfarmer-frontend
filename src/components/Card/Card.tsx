@@ -10,7 +10,7 @@ const StyledCard = styled.div`
   box-shadow: inset 1px 1px 0px ${(props) => props.theme.color.grey[100]};
   display: flex;
   flex: 1;
-  background-color:#fff;
+  background-color:#dce795;
   flex-direction: column;
 `
 

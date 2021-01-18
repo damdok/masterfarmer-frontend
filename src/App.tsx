@@ -13,9 +13,10 @@ import theme from './theme'
 import DisclaimerModal from './components/DisclaimerModal'
 import MobileMenu from './components/MobileMenu'
 import TopBar from './components/TopBar'
+import TopTitleBar from './components/TopTitleBar'
 import useModal from './hooks/useModal'
 import Home from './views/Home'
-import Farms from './views/Farms'
+import Farm from './views/Farm'
 import Decay from './views/Decay'
 
 const App: React.FC = () => {
@@ -33,6 +34,7 @@ const App: React.FC = () => {
     
     <Providers>
       <Router>
+        <TopTitleBar onPresentMobileMenu={handlePresentMobileMenu} />
         <TopBar onPresentMobileMenu={handlePresentMobileMenu} />
         <MobileMenu onDismiss={handleDismissMobileMenu} visible={mobileMenu} />
         <Switch>
@@ -40,7 +42,7 @@ const App: React.FC = () => {
             <Home />
           </Route>
           <Route path="/farms">
-            <Farms />
+            <Farm />
           </Route>
           <Route path="/decay">
             <Decay />
@@ -57,6 +59,9 @@ const Providers: React.FC = ({ children }) => {
     <ThemeProvider theme={theme}>
       <UseWalletProvider
         chainId={3}
+        //connectors={{
+        //  walletconnect: { rpcUrl: 'https://mainnet.infura.io/v3/8f3443d966884c7288b940947b5c37c1' },
+        //}}
         connectors={{
           walletconnect: { rpcUrl: 'https://ropsten.infura.io/v3/8f3443d966884c7288b940947b5c37c1' },
         }}

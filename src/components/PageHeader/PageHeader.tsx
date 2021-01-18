@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import Container from '../Container'
-import brocoli from '../../assets/img/brocoli.jpg'
-import carrot from '../../assets/img/carrot.png'
 
 interface PageHeaderProps {
   icon: React.ReactNode
@@ -12,33 +9,7 @@ interface PageHeaderProps {
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({ icon, subtitle, title }) => {
-  if (title == "CROPS-ETH"){
-  return (
-    <Container size="sm">
-      <StyledPageHeader>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledIcon>               
-          <img src={carrot} height="128" style={{ marginTop: 0 }} />
-        </StyledIcon>
-        <StyledSubtitle>{subtitle}</StyledSubtitle>
-      </StyledPageHeader>
-    </Container>
-  )
-}
-else if (title == "CROPS-USDC"){
-  return (
-    <Container size="sm">
-      <StyledPageHeader>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledIcon>        
-          <img src={brocoli} height="128" style={{ marginTop: 0 }} />     
-        </StyledIcon>
-        <StyledSubtitle>{subtitle}</StyledSubtitle>
-      </StyledPageHeader>
-    </Container>
-  )
-}
-else{
+  
   return (
     <Container size="sm">
       <StyledPageHeader>
@@ -52,7 +23,7 @@ else{
   ) 
 }
 
-}
+
 
 const StyledPageHeader = styled.div`
   align-items: center;
@@ -66,8 +37,8 @@ const StyledPageHeader = styled.div`
 
 const StyledIcon = styled.div`
   font-size: 120px;
-  height: 120px;
-  line-height: 120px;
+  height: 130px;
+  line-height: 200px;
   text-align: center;
   width: 120px;
 `
@@ -75,7 +46,7 @@ const StyledIcon = styled.div`
 const StyledTitle = styled.h1`
   font-family: 'Arial-Rounded', sans-serif;
   color: ${(props) => props.theme.color.grey[600]};
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
   margin: 0;
   padding: 0;
@@ -83,6 +54,7 @@ const StyledTitle = styled.h1`
 
 const StyledSubtitle = styled.h3`
   color: ${(props) => props.theme.color.grey[600]};
+  font-family:  'Forte','Arial-Rounded', sans-serif;
   font-size: 25px;
   font-weight: 600;
   margin: 0;

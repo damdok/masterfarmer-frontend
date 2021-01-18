@@ -20,7 +20,7 @@ const useApprove = (lpContract: Contract) => {
 
     } catch (e) {
 
-      console.log(e);
+      //console.log(e);
 
       return false
     }

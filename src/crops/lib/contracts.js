@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js/bignumber'
 import ERC20Abi from './abi/erc20.json'
 import MasterChefAbi from './abi/masterchef.json'
+import AutoDepositAbi from './abi/autodeposit.json'
 import CropsAbi from './abi/crops.json'
 import UNIV2PairAbi from './abi/uni_v2_lp.json'
 import WETHAbi from './abi/weth.json'
@@ -23,6 +24,7 @@ export class Contracts {
 
     this.crops = new this.web3.eth.Contract(CropsAbi)
     this.masterChef = new this.web3.eth.Contract(MasterChefAbi)
+    this.autodeposit = new this.web3.eth.Contract(AutoDepositAbi)
 
     this.weth = new this.web3.eth.Contract(WETHAbi)
 
@@ -48,6 +50,7 @@ export class Contracts {
 
     setProvider(this.crops, contractAddresses.crops[networkId])
     setProvider(this.masterChef, contractAddresses.masterChef[networkId])
+    setProvider(this.autodeposit, contractAddresses.autodeposit[networkId])
     setProvider(this.weth, contractAddresses.weth[networkId])
 
     this.pools.forEach(
@@ -88,7 +91,7 @@ export class Contracts {
         txOptions.gas = this.defaultGas
       } else {
         try {
-          console.log('estimating gas')
+          //console.log('estimating gas')
           gasEstimate = await method.estimateGas(txOptions)
         } catch (error) {
           const data = method.encodeABI()

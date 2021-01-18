@@ -25,7 +25,7 @@ const useStake = (pid: number) => {
         amount,
         account,
       )
-      console.log(txHash)
+      //console.log(txHash)
     },
     [account, pid, crops],
   )

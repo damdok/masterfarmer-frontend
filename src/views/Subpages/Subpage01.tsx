@@ -41,8 +41,12 @@ const Subpage01: React.FC = () => {
         <Spacer />
         <div style={{ flex: 1 }}>
           <StyledValue>
-            {!!account ? getBalanceNumber(cropsBalance)+"CROPS" : 'Locked'}
-          </StyledValue>
+            {!!account ? 
+              getBalanceNumber(cropsBalance) : 'Locked'}
+          </StyledValue>            
+          <StyledTextValue>
+            Your Balance
+          </StyledTextValue>
         </div>
       </StyledBalance>
 
@@ -75,13 +79,17 @@ const StyledBalance = styled.div`
   display: flex;
   margin-left: auto;
   margin-right: auto;
-  width: 25%;
+  width: 30%;
   align-items: center;
   justify-content: center;
   text-align:center;
   padding-top:15px;
   padding-bottom:15px;
   color: ${(props) => props.theme.color.grey[900]};
+  @media (max-width: 768px) {
+    width: 60%;
+    align-items: stretch;
+  }
 `
 
 const StyledValue = styled.div`
@@ -90,7 +98,14 @@ const StyledValue = styled.div`
   font-size: 20px;
   font-weight: 800;
   padding-top: 30px;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
+`
+
+const StyledTextValue = styled.div`
+  font-family: 'Arial-Rounded', sans-serif;
+  color: ${(props) => props.theme.color.grey[600]};
+  font-size: 20px;
+  font-weight: 800;
 `
 
 export default Subpage01

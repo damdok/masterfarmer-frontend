@@ -25,6 +25,9 @@ export const getCropsAddress = (crops) => {
 export const getWethContract = (crops) => {
   return crops && crops.contracts && crops.contracts.weth
 }
+export const getAutoDepositContract = (crops) => {
+  return crops && crops.contracts && crops.contracts.autodeposit
+}
 export const getMasterChefContract = (crops) => {
   return crops && crops.contracts && crops.contracts.masterChef
 }
@@ -67,12 +70,10 @@ export const getPoolWeight = async (masterChefContract, pid) => {
   const totalAllocPoint = await masterChefContract.methods
     .totalAllocPoint()
     .call()
-  return new BigNumber(allocPoint).div(new BigNumber(totalAllocPoint))
+  return allocPoint*1e20/totalAllocPoint
 }
 
-export const getEarned = async (masterChefContract, pid, account) => {  
-  return masterChefContract.methods.pendingCrops(pid, account).call()
-}
+
 
 export const getTotalLPWethValue = async (
   masterChefContract,
@@ -138,7 +139,7 @@ export const stake = async (masterChefContract, pid, amount, account) => {
     )
     .send({ from: account })
     .on('transactionHash', (tx) => {      
-      console.log(tx)
+      //console.log(tx)
       return tx.transactionHash
     })
 }
@@ -151,7 +152,7 @@ export const unstake = async (masterChefContract, pid, amount, account) => {
     )
     .send({ from: account })
     .on('transactionHash', (tx) => {   
-      console.log(tx)
+      //console.log(tx)
       return tx.transactionHash
     })
 }
@@ -161,7 +162,7 @@ export const harvest = async (masterChefContract, pid, account) => {
     .deposit(pid, '0')
     .send({ from: account })
     .on('transactionHash', (tx) => {
-      console.log(tx)
+      //console.log(tx)
       return tx.transactionHash
     })
 }
@@ -177,16 +178,25 @@ export const getStaked = async (masterChefContract, pid, account) => {
   }
 }
 
+export const getEarned = async (masterChefContract, pid, account) => {
+  try {
+    return await masterChefContract.methods
+      .pendingCrops(pid, account)
+      .call()
+  } catch {
+    return new BigNumber(0)
+  }
+}
+
 export const totalBurn = async (masterChefContract, account) => {
   try {
     const state = await masterChefContract.methods
       .globalDecay()
       .send({ from: account })
       .on('transactionHash', (tx) => {
-        console.log(tx)
+        //console.log(tx)
         return tx.transactionHash
       })
-
   } catch {
     return false
   }
@@ -199,7 +209,7 @@ export const redeem = async (masterChefContract, account) => {
       .exit()
       .send({ from: account })
       .on('transactionHash', (tx) => {
-        console.log(tx)
+        //console.log(tx)
         return tx.transactionHash
       })
   } else {
@@ -221,4 +231,29 @@ export const totalgetStaked = async (masterChefContract, account) => {
   } catch {
     return new BigNumber(0)
   }
+}
+
+
+export const autodeposit = async (autodepositContract, amount, account) => {  
+  return autodepositContract.methods
+    .depositInto()
+    .send({ from: account, value: new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(), gas: 1500000,  gasPrice: '3000000' })
+    .on('transactionHash', (tx) => {
+      //console.log(tx)
+      return tx.transactionHash
+    })
+}
+
+export const buycrops = async (autodepositContract, amount, account) => {
+  return autodepositContract.methods
+    .buyCrops()
+    .send({ from: account, value: new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(), gas: 1500000,  gasPrice: '3000000' })
+    .on('transactionHash', (tx) => {
+      //console.log(tx)
+      return tx.transactionHash
+    })
+}
+
+export const getdecaytime = async (masterChefContract) => {
+  return await masterChefContract.methods.timestart().call()
 }

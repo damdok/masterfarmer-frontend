@@ -138,6 +138,47 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "useraccount",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "UsingETHdeposit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "useraccount",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_amount",
+				"type": "uint256"
+			}
+		],
+		"name": "UsingETHnonethpooldeposit",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "_owner",
 		"outputs": [
@@ -174,6 +215,29 @@
 		"type": "function"
 	},
 	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_allocPoint",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_withUpdate",
+				"type": "bool"
+			},
+			{
+				"internalType": "contract IStakingAdapter",
+				"name": "_adapter",
+				"type": "address"
+			}
+		],
+		"name": "addWithRestaking",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
 		"inputs": [],
 		"name": "bonusEndBlock",
 		"outputs": [
@@ -189,12 +253,55 @@
 	{
 		"inputs": [
 			{
+				"internalType": "address",
+				"name": "account",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "burntoken",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "_newdecayBurnrate",
 				"type": "uint256"
 			}
 		],
 		"name": "changedecayBurnrate",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_newTMR",
+				"type": "uint256"
+			}
+		],
+		"name": "changeteamMintrate",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -203,7 +310,7 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
-				"name": "_newtokensPerBlock",
+				"name": "_newTPB",
 				"type": "uint256"
 			}
 		],
@@ -221,7 +328,13 @@
 			}
 		],
 		"name": "changetransBurnrate",
-		"outputs": [],
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
@@ -333,15 +446,27 @@
 		"type": "function"
 	},
 	{
-		"inputs": [],
-		"name": "globalDecay",
-		"outputs": [],
-		"stateMutability": "nonpayable",
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
+			}
+		],
+		"name": "getPoolsLP",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "massUpdatePools",
+		"name": "globalDecay",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -354,19 +479,45 @@
 				"type": "uint256"
 			}
 		],
-		"name": "migrate",
+		"name": "isRestaking",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "outcome",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "massUpdatePools",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "migrator",
+		"name": "maxteamMintrate",
 		"outputs": [
 			{
-				"internalType": "contract IMigratorChef",
+				"internalType": "uint256",
 				"name": "",
-				"type": "address"
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "maxtokenperblock",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
 			}
 		],
 		"stateMutability": "view",
@@ -413,6 +564,30 @@
 		"inputs": [
 			{
 				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "_user",
+				"type": "address"
+			}
+		],
+		"name": "pendingOther",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
 			}
@@ -438,6 +613,21 @@
 				"internalType": "uint256",
 				"name": "accCropsPerShare",
 				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "accOtherPerShare",
+				"type": "uint256"
+			},
+			{
+				"internalType": "contract IStakingAdapter",
+				"name": "adapter",
+				"type": "address"
+			},
+			{
+				"internalType": "contract IERC20",
+				"name": "otherToken",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",
@@ -454,6 +644,24 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "_claim",
+				"type": "bool"
+			}
+		],
+		"name": "removeRestaking",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -489,19 +697,29 @@
 	{
 		"inputs": [
 			{
-				"internalType": "contract IMigratorChef",
-				"name": "_migrator",
+				"internalType": "uint256",
+				"name": "_pid",
+				"type": "uint256"
+			},
+			{
+				"internalType": "contract IStakingAdapter",
+				"name": "_adapter",
 				"type": "address"
+			},
+			{
+				"internalType": "bool",
+				"name": "_claim",
+				"type": "bool"
 			}
 		],
-		"name": "setMigrator",
+		"name": "setRestaking",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
 		"inputs": [],
-		"name": "showblocknumber",
+		"name": "startBlock",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -514,7 +732,20 @@
 	},
 	{
 		"inputs": [],
-		"name": "startBlock",
+		"name": "teamMintrate",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "timestart",
 		"outputs": [
 			{
 				"internalType": "uint256",
@@ -587,6 +818,11 @@
 			{
 				"internalType": "uint256",
 				"name": "rewardDebt",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "otherRewardDebt",
 				"type": "uint256"
 			}
 		],

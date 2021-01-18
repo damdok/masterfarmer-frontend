@@ -1,0 +1,79 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "contract MasterChef",
+				"name": "_masterchef",
+				"type": "address"
+			},
+			{
+				"internalType": "contract CropsToken",
+				"name": "_crops",
+				"type": "address"
+			},
+			{
+				"internalType": "contract IUniswapV2Router02",
+				"name": "_uniswapRouter",
+				"type": "address"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "user",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "ethSpentOnCROPS",
+				"type": "uint256"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "cropsBought",
+				"type": "uint256"
+			}
+		],
+		"name": "CropsBuyback",
+		"type": "event"
+	},
+	{
+		"inputs": [],
+		"name": "buyCrops",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "crops",
+		"outputs": [
+			{
+				"internalType": "contract CropsToken",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "depositInto",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"stateMutability": "payable",
+		"type": "receive"
+	}
+]
